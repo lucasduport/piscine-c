@@ -17,9 +17,14 @@ while [ $# -gt 1 ]; do
 
     "-e" | "--extension")
       ext=$2
-    ;;
+      ;;
+    *)
+      exit 1
+      ;;
   esac
   shift 2
 done
 
-touch "$fn-$nb.$ext"
+for i in $(seq 1 $nb); do
+    touch "${fn}-${i}.${ext}"
+done
