@@ -4,6 +4,10 @@ fn=default
 nb=1
 ext=txt
 
+if [ $(( $# % 2 )) -ne 0 ]; then
+    exit 1;
+fi
+
 while [ $# -gt 1 ]; do
     case $1 in
     
@@ -13,7 +17,7 @@ while [ $# -gt 1 ]; do
 
     "-n" | "--number")
         nb=$2
-      ;;
+        ;;
 
     "-e" | "--extension")
         ext=$2
