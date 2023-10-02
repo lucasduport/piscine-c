@@ -13,9 +13,6 @@ while [ $# -gt 1 ]; do
 
     "-n" | "--number")
         nb=$2
-        if ! [[ "$nb" =~ [0-9]+ ]]; then
-          exit 1
-        fi
       ;;
 
     "-e" | "--extension")
@@ -28,6 +25,10 @@ while [ $# -gt 1 ]; do
     shift 2
 done
 
-for i in $(seq 1 $nb); do
+if [ $(seq 1 ${nb} > "/dev/null"; echo $?) -eq 1 ]; then
+    exit 1
+fi
+
+for i in $(seq 1 ${nb}); do
     touch -- "${fn}-${i}.${ext}"
 done
