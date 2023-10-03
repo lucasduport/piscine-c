@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void alphabet()
+void alphabet(void)
 {
     putchar('a');
     for (int i = 1; i < 26; i++)
