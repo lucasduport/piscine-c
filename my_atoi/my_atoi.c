@@ -36,5 +36,5 @@ int my_atoi(const char *str)
         }
         return 0;
     }
-    return res;
+    return sign * res;
 }
