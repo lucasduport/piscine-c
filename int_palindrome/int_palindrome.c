@@ -16,7 +16,7 @@ static int cmpt_palindrome(int n)
     int i = 0;
     while (n != 0)
     {
-        res += my_pow(10, count - 1 -i) * (n % 10);
+        res += my_pow(10, count - 1 - i) * (n % 10);
         i++;
         n /= 10;
     }
