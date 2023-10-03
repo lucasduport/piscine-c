@@ -3,7 +3,9 @@
 int top_of_the_hill(int tab[], size_t len)
 {
     if (len == 0)
+    {
         return -1;
+    }
     size_t i = 0;
     for (; i < len - 1 && tab[i] <= tab[i + 1]; i++)
         continue;
