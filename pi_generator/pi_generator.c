@@ -1,6 +1,6 @@
 double pi_gen(double i, double p)
 {
-    if (p == i)
+    if (p == i - 1)
         return 1;
     return (1 + (i / (i * 2 + 1)) * pi_gen(i + 1, p));
 }
