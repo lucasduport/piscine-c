@@ -3,7 +3,7 @@
 size_t element_count(int *begin, int *end)
 {
     size_t count = 0;
-    for (; begin + i != end; count++)
+    for (; begin + count != end; count++)
         continue;
     return count;
 }
