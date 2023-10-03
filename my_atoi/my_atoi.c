@@ -34,7 +34,6 @@ int my_atoi(const char *str)
             res += (str[i] - '0') * my_pow(10, nbDigits);
             nbDigits++;
         }
-        return 0;
     }
     return sign * res;
 }
