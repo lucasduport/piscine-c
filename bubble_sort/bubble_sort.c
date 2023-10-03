@@ -2,6 +2,8 @@
 
 int isSorted(int arr[], size_t size)
 {
+    if (size == 0)
+        return 1;
     for (size_t i = 0; i < size - 1; i++)
     {
         if (arr[i] > arr[i + 1])
@@ -14,7 +16,7 @@ void bubble_sort(int array[], size_t size)
 {
     while (isSorted(array, size) == 0)
     {
-        for(size_t i = 0; i < size - 1; i++)
+        for (size_t i = 0; i < size - 1; i++)
         {
             if (array[i] > array[i + 1])
             {
