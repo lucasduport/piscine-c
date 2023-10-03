@@ -2,7 +2,7 @@
 
 #include <stddef.h>
 
-static int isAlphaNum (char c)
+static int isAlphaNum(char c)
 {
     if (c >= 'A' && c <= 'Z')
         return 1;
