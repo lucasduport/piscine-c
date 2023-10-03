@@ -7,7 +7,7 @@ void display_square(int width)
     if (width % 2 == 0)
         width++;
     int rows = (width + 1) / 2;
-    for(int i = 0; i < width; i++)
+    for (int i = 0; i < width; i++)
         putchar('*');
     putchar('\n');
     for (int i = 0; i < rows - 2; i++)
@@ -18,7 +18,9 @@ void display_square(int width)
         putchar('*');
         putchar('\n');
     }
-    for(int i = 0; i < width; i++)
+    if (width == 1)
+        return;
+    for (int i = 0; i < width; i++)
         putchar('*');
     putchar('\n');
 }
