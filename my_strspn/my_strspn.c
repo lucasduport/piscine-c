@@ -13,7 +13,10 @@ static int charInWord(char c, const char *accept)
 size_t my_strspn(const char *s, const char *accept)
 {
     size_t i = 0;
-    for (; s[i] != 0 && charInWord(s[i], accept) == 1; i++)
-        continue;
-    return i;
+    size_t count = 0;
+    for (; s[i] != 0; i++)
+    {
+        count += charInWord(s[i], accept);
+    }
+    return count;
 }
