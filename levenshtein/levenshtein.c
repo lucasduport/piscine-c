@@ -21,9 +21,11 @@ size_t rec_lev(const char *s1, const char *s2, size_t i, size_t j)
     {
         return max(i, j);
     }
-    return min(rec_lev(s1, s2, i - 1, j) + 1,
-               min(rec_lev(s1, s2, i, j - 1) + 1,
-                   rec_lev(s1, s2, i - 1, j - 1) + cmp_chr(s1[i], s2[j])));
+    if (s1[i] == s2[j])
+        return rec_lev(s1, s2, i - 1, j - 1);
+    return 1
+        + min(rec_lev(s1, s2, i - 1, j),
+              min(rec_lev(s1, s2, i, j - 1), rec_lev(s1, s2, i - 1, j - 1)));
 }
 
 size_t len_s(const char *s)
