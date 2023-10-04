@@ -5,9 +5,9 @@
 void print_complex(struct complex a)
 {
     if (a.img < 0)
-        printf("complex(%f - %fi)\n", a.real, -a.img);
+        printf("complex(%.2f - %.2fi)\n", a.real, -a.img);
     else
-        printf("complex(%f + %fi)\n", a.real, a.img);
+        printf("complex(%.2f + %.2fi)\n", a.real, a.img);
 }
 
 struct complex neg_complex(struct complex a)
@@ -49,12 +49,4 @@ struct complex div_complex(struct complex a, struct complex b)
     res.real = (aa * c + bb * d) / (c * c + d * d);
     res.img = (bb * c - aa * d) / (c * c + d * d);
     return res;
-}
-
-int main(void)
-{
-    struct complex test;
-    test.real = 1;
-    test.img = -5;
-    print_complex(test);
 }
