@@ -10,24 +10,24 @@ int my_pow(int n, int p)
 int isInvalid(const char *str, const char *base)
 {
     int i = 0;
-    int num = 0;
     int sign = 0;
     for (; str[i] != 0; i++)
     {
         size_t check = 0;
-        for (; base[check] != 0 && base[check] != str[check]; check++)
-            continue;
-        if (base[check] == 0)
+        for (; base[check] != 0; check++)
+        {
+            if (base[check] == str[i])
+                break;
+        }
+        if (base[check] != 0)
             return 0;
-        if (str[i] >= '0' && str[i] <= '9')
-            num = 1;
         else if (str[i] == '+' || str[i] == '-')
         {
             if (sign == 1)
                 return 0;
             sign = 1;
         }
-        else if (str[i] == ' ' && num + sign == 0)
+        else if (str[i] == ' ' && sign == 0)
             continue;
         else
             return 0;
@@ -45,13 +45,23 @@ size_t my_strlen(const char *s)
     return count;
 }
 
+size_t getPos(char c, const char *base)
+{
+    size_t i = 0;
+    for (; base[i] != c; i++)
+        continue;
+    return i;
+}
+
 int my_atoi_base(const char *str, const char *base)
 {
     int len = 0;
     for (; str[len] != 0; len++)
         continue;
-    if (isInvalid(str, base) == 0)
-        return 0;
+    if (isInvalid(str, base) == 66)
+    {
+        return 66;
+    }
     int baseInt = my_strlen(base);
     int res = 0;
     int nbDigits = 0;
@@ -62,9 +72,9 @@ int my_atoi_base(const char *str, const char *base)
         {
             sign = (str[i] == '+') ? 1 : -1;
         }
-        else if (str[i] >= '0' && str[i] <= '9')
+        else if (str[i] != ' ')
         {
-            res += (str[i] - '0') * my_pow(baseInt, nbDigits);
+            res += (getPos(str[i], base)) * my_pow(baseInt, nbDigits);
             nbDigits++;
         }
     }
