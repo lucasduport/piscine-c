@@ -2,6 +2,8 @@
 
 void rot_x(char *s, int x)
 {
+    if (s == NULL)
+        return;
     size_t i = 0;
     for (; s[i] != 0; i++)
     {
