@@ -9,7 +9,7 @@ static char toMaj(char c)
     return c;
 }
 
-int my_strcmp(const char *s1, const char *s2)
+int my_strcasecmp(const char *s1, const char *s2)
 {
     size_t i = 0;
     for (; toMaj(s1[i]) == toMaj(s2[i]) && s1[i] != 0 && s2[i] != 0; i++)
