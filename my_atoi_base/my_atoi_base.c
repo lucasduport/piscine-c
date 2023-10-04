@@ -58,9 +58,9 @@ int my_atoi_base(const char *str, const char *base)
     int len = 0;
     for (; str[len] != 0; len++)
         continue;
-    if (isInvalid(str, base) == 66)
+    if (isInvalid(str, base) == 0)
     {
-        return 66;
+        return 0;
     }
     int baseInt = my_strlen(base);
     int res = 0;
