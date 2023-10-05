@@ -12,20 +12,35 @@ static int charInWord(char c, const char *accept)
 
 char *my_strtok_r(char *str, const char *delim, char **saveptr)
 {
-    size_t saveI = 0;
     if (str == NULL)
     {
-        for (; saveptr[saveI + 1] != NULL; saveI++)
-            continue;
+        str = *saveptr;
     }
-    str = saveptr[saveI];
-    for (size_t i = 0; str[i] != 0; i++)
+    size_t i = 0;
+    for (; str[i] != 0; i++)
     {
         if (charInWord(str[i], delim) == 1)
         {
-            saveptr[saveI + 1] = str + i;
-            return str + i;
+            *saveptr = str + i + 1;
+            return str + i + 1;
         }
     }
-    return NULL;
+    return str + i;
+}
+
+#include <stdio.h>
+
+int main()
+{
+    char str[] = "Hey brother hey sister";
+    char *rest = str;
+    char *token = my_strtok_r(rest, " ", &rest);
+
+    while (token[0] != 0)
+    {
+        printf("%s\n", token);
+        token = my_strtok_r(NULL, " ", &rest);
+    }
+
+    return (0);
 }
