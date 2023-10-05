@@ -2,7 +2,7 @@
 
 static void transformToGround(struct world *wrld, int i, int j)
 {
-    if (0 <= i && i <= wrld->width && 0 <= j && j <= wrld->height)
+    if (0 <= i && i < wrld->height && 0 <= j && j < wrld->width)
     {
         char **m = wrld->map;
         if (m[i][j] == '.')
@@ -24,16 +24,17 @@ int lakes(char **map, int width, int height)
     wrld->map = map;
 
     int lakes = 0;
-    for (int i = 0; i < width; i++)
+    for (int i = 0; i < height; i++)
     {
-        for (int j = 0; j < height; j++)
+        for (int j = 0; j < width; j++)
         {
-            if (map[i][i] == '.')
+            if (map[i][j] == '.')
             {
                 lakes++;
                 transformToGround(wrld, i, j);
             }
         }
     }
+    free(wrld);
     return lakes;
 }
