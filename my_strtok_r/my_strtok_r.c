@@ -27,20 +27,3 @@ char *my_strtok_r(char *str, const char *delim, char **saveptr)
     }
     return str + i;
 }
-
-#include <stdio.h>
-
-int main()
-{
-    char str[] = "Hey brother hey sister";
-    char *rest = str;
-    char *token = my_strtok_r(rest, " ", &rest);
-
-    while (token[0] != 0)
-    {
-        printf("%s\n", token);
-        token = my_strtok_r(NULL, " ", &rest);
-    }
-
-    return (0);
-}
