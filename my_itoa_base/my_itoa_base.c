@@ -25,6 +25,12 @@ void str_revert(char *str)
 
 char *my_itoa_base(int n, char *s, const char *base)
 {
+    if (n == 0)
+    {
+        s[0] = base[0];
+        s[1] = 0;
+        return s;
+    }
     int baseInt = my_strlen(base);
     int sign = 1;
     if (n < 0)
