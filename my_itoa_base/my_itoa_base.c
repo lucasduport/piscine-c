@@ -2,6 +2,8 @@
 
 size_t my_strlen(const char *s)
 {
+    if (s == NULL)
+        return 0;
     size_t count = 0;
     for (size_t i = 0; s[i] != 0; i++)
     {
@@ -12,9 +14,7 @@ size_t my_strlen(const char *s)
 
 void str_revert(char *str)
 {
-    size_t len = 0;
-    for (size_t i = 0; str[i] != 0; i++)
-        len++;
+    size_t len = my_strlen(str);
     for (size_t i = 0; i < len / 2; i++)
     {
         char tmp = str[i];
@@ -39,7 +39,7 @@ char *my_itoa_base(int n, char *s, const char *base)
     }
     if (sign == -1)
         s[i++] = '-';
-    str_revert(s);
     s[i] = 0;
+    str_revert(s);
     return s;
 }
