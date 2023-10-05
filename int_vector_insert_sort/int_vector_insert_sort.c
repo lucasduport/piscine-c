@@ -10,8 +10,8 @@ static struct int_vector swap(struct int_vector vec, size_t i, size_t j)
 
 struct int_vector int_vector_insert_sort(struct int_vector vec)
 {
-    size_t i = 0;
-    while (i < INT_VECTOR_LENGTH)
+    size_t i = 1;
+    while (i < vec.size)
     {
         size_t j = i;
         while (j > 0 && vec.data[j - 1] > vec.data[j])
