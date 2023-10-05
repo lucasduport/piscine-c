@@ -2,7 +2,7 @@
 
 static int charInWord(char c, const char *accept)
 {
-    for (size_t i = 0; accept[i] != 0; c++)
+    for (size_t i = 0; accept[i] != 0; i++)
     {
         if (accept[i] == c)
             return 1;
