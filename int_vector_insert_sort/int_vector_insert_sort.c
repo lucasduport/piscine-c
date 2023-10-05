@@ -16,7 +16,7 @@ struct int_vector int_vector_insert_sort(struct int_vector vec)
         size_t j = i;
         while (j > 0 && vec.data[j - 1] > vec.data[j])
         {
-            swap(vec, j, j - 1);
+            vec = swap(vec, j, j - 1);
             j--;
         }
         i++;
