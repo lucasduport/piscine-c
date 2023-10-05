@@ -3,8 +3,8 @@
 int int_vector_vice_max(const struct int_vector vec)
 {
     int max2 = vec.data[0];
-    int max = vec.data[0];
-    for(size_t i = 0; i < vec.size; i++)
+    int max = vec.data[1];
+    for (size_t i = 0; i < vec.size; i++)
     {
         if (vec.data[i] > max)
         {
