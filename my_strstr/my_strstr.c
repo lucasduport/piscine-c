@@ -12,6 +12,8 @@ int my_strcmp(const char *ha, const char *ne)
 
 int my_strstr(const char *haystack, const char *needle)
 {
+    if (haystack[0] == 0 && needle[0] == 0)
+        return 0;
     for (int i = 0; haystack[i] != 0; i++)
     {
         if (my_strcmp(haystack + i, needle) == 1)
