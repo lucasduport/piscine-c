@@ -16,7 +16,10 @@ size_t my_strspn(const char *s, const char *accept)
     size_t count = 0;
     for (; s[i] != 0; i++)
     {
-        count += charInWord(s[i], accept);
+        int isInW = charInWord(s[i], accept);
+        if (isInW == 0)
+            return count;
+        count++;
     }
     return count;
 }
