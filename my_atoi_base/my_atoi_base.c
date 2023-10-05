@@ -7,27 +7,34 @@ int my_pow(int n, int p)
     return n * my_pow(n, p - 1);
 }
 
+int isInBase(char c, const char *base)
+{
+    for (size_t check = 0; base[check] != 0; check++)
+    {
+        if (base[check] == c)
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+
 int isInvalid(const char *str, const char *base)
 {
     int i = 0;
+    int num = 0;
     int sign = 0;
     for (; str[i] != 0; i++)
     {
-        size_t check = 0;
-        for (; base[check] != 0; check++)
-        {
-            if (base[check] == str[i])
-                break;
-        }
-        if (base[check] != 0)
-            return 0;
+        if (isInBase(str[i], base) == 1)
+            num = 1;
         else if (str[i] == '+' || str[i] == '-')
         {
             if (sign == 1)
                 return 0;
             sign = 1;
         }
-        else if (str[i] == ' ' && sign == 0)
+        else if (str[i] == ' ' && num + sign == 0)
             continue;
         else
             return 0;
