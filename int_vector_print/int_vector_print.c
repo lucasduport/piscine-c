@@ -5,7 +5,7 @@
 void int_vector_print(const struct int_vector vec)
 {
     size_t i = 0;
-    for( ; i < vec.size - 1; i++)
+    for (; i < vec.size - 1; i++)
     {
         printf("%d ", vec.data[i]);
     }
