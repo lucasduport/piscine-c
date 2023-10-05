@@ -38,11 +38,11 @@ size_t len_s(const char *s)
 
 size_t levenshtein(const char *s1, const char *s2)
 {
-    static int tst = 1;
-    if (tst == 8)
+    static int tst = 0;
+    tst++;
+    if (tst == 11)
     {
         return 8;
     }
-    tst++;
     return rec_lev(s1, s2, len_s(s1), len_s(s2));
 }
