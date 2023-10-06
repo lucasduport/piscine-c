@@ -14,23 +14,32 @@ char *my_strtok_r(char *str, const char *delim, char **saveptr)
 {
     if (str == NULL)
     {
-        if (*saveptr != 0)
-            str = *saveptr;
-        else
-            return 0;
+        if (*saveptr == NULL)
+            return NULL;
+        str = *saveptr;
     }
-    if (str == NULL && *saveptr == NULL)
-        return NULL;
     size_t i = 0;
+    for (; str[i] != 0 && (charInWord(str[i], delim) == 1); i++)
+        continue;
+    str = str + i;
+    i = 0;
     for (; str[i] != 0; i++)
     {
         if (charInWord(str[i], delim) == 1)
         {
-            *saveptr = str + i + 1;
+            size_t j = i;
+            for (; str[j] != 0 && charInWord(str[j], delim) == 1; j++)
+                continue;
+            *saveptr = str + j;
             str[i] = 0;
             return str;
         }
     }
-    *saveptr = NULL;
+    if (str[i] == 0)
+    {
+        if (i == 0)
+            return NULL;
+        *saveptr = NULL;
+    }
     return str;
 }
