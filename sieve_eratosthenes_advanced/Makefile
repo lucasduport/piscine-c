@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -std=c99 -Wvla -pedantic
 LDFLAGS =
-OBJ = sieve_eratosthenes_advanced.o
+OBJ = sieve.o
 BIN = main
 
 all: $(OBJ)
