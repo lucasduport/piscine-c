@@ -3,26 +3,22 @@
 
 void sieve(int n)
 {
-    unsigned cnt = 0;
-    if (n <= 1)
+    if (n <= 2)
         return;
-    if (n > 2)
-        cnt++;
+    int cnt = n / 2;
     char *marked = calloc(n / 2, sizeof(char));
     for (int i = 3; i * i <= n; i += 2)
     {
         if (marked[i / 2] == 0)
         {
-            cnt++;
-            for (int j = i + 2; j * j <= n; j += 2)
+            for (int j = 3 * i; j <= n; j += i * 2)
             {
-                if (j % i == 0)
-                {
-                    marked[j / 2] = 1;
-                }
+                if (marked[j / 2] == 0)
+                    cnt--;
+                marked[j / 2] = 1;
             }
         }
     }
-    printf("%u\n", cnt);
+    printf("%d\n", cnt);
     free(marked);
 }
