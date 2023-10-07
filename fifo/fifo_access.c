@@ -11,15 +11,11 @@ size_t fifo_size(struct fifo *fifo)
 void fifo_push(struct fifo *fifo, int elt)
 {
     struct list *newT = malloc(sizeof(struct list));
-    newT->next = NULL;
     newT->data = elt;
-    if (fifo->tail == NULL)
-    {
-        newT->next = fifo->tail;
-    }
+    newT->next = fifo->tail;
     fifo->tail = newT;
     if (fifo->head == NULL)
-        fifo->head = fifo->tail;
+        fifo->head = newT;
     fifo->size++;
 }
 
@@ -30,24 +26,39 @@ int fifo_head(struct fifo *fifo)
 
 void fifo_pop(struct fifo *fifo)
 {
-    if (fifo->head == NULL)
+    if (fifo->size == 0)
         return;
-    struct list *i = fifo->tail;
-    for (; i->next != fifo->head; i = i->next)
+    if (fifo->size == 1)
+    {
+        free(fifo->head);
+        fifo->head = NULL;
+        fifo->tail = NULL;
+        fifo->size = 0;
+        return;
+    }
+    struct list *h = fifo->tail;
+    for (; h->next != fifo->head; h = h->next)
         continue;
-    struct list *toFree = fifo->head;
-    fifo->head = i;
+    fifo->head = h;
+    free(h->next);
+    h->next = NULL;
     fifo->size--;
-    free(toFree);
+    if (fifo->size == 1)
+        fifo->tail = fifo->head;
 }
 
 void fifo_print(const struct fifo *fifo)
 {
-    struct list *i = fifo->head;
-    for (; i != NULL; i = i->next)
+    int *values = malloc(sizeof(int) * fifo->size);
+    struct list *l = fifo->tail;
+    size_t i = 0;
+    for (; l != NULL; i++, l = l->next)
     {
-        printf("%d", i->data);
-        if (i->next != NULL)
-            putchar('\n');
+        values[i] = l->data;
     }
+    for (int j = i - 1; j >= 0; j--)
+    {
+        printf("%d\n", values[j]);
+    }
+    free(values);
 }
