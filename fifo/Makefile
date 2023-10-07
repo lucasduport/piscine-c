@@ -4,7 +4,7 @@
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -std=c99 -Wvla -pedantic
-CPPFLAGS = -fsanitize=address -g
+CPPFLAGS = -fsanitize=address -g3
 LDFLAGS =
 OBJ = fifo_access.o \
 	  fifo_setup_destroy.o

@@ -16,18 +16,11 @@ struct fifo *fifo_init(void)
 
 void fifo_clear(struct fifo *fifo)
 {
-    if (fifo == NULL || fifo->tail == NULL)
-        return;
-    struct list *i = fifo->tail;
-    while (i != NULL)
+    size_t s = fifo->size;
+    for (size_t i = 0; i < s; i++)
     {
-        struct list *tmp = i->next;
-        free(i);
-        i = tmp;
+        fifo_pop(fifo);
     }
-    fifo->head = NULL;
-    fifo->tail = NULL;
-    fifo->size = 0;
 }
 
 void fifo_destroy(struct fifo *fifo)
