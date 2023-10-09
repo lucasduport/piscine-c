@@ -8,7 +8,7 @@ CPPFLAGS = -fsanitize=address -g3
 LDFLAGS =
 OBJ = sieve.o
 
-sieve.o: sieve.c
+all: sieve.c
 	@$(CC) $(CFLAGS) -c $^
 
 main: $(OBJ)
