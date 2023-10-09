@@ -24,6 +24,13 @@ void dlist_reverse(struct dlist *list)
     list->tail = tmp;
 }
 
+void reset_dlist(struct dlist *d)
+{
+    d->size = 0;
+    d->tail = NULL;
+    d->head = NULL;
+}
+
 struct dlist *dlist_split_at(struct dlist *list, size_t index)
 {
     if (index > list->size)
@@ -31,19 +38,17 @@ struct dlist *dlist_split_at(struct dlist *list, size_t index)
     struct dlist *new = malloc(sizeof(struct dlist));
     if (new == NULL)
         return NULL;
-    if (list->size == 0 || index == 0 || index == list->size)
+    reset_dlist(new);
+    if (list->size == 0 || index == 0)
     {
-        new->size = 0;
-        new->tail = NULL;
-        new->head = NULL;
-        if (index != 0)
-            return new;
+        return new;
+    }
+    else if (index == list->size)
+    {
         new->size = list->size;
-        new->tail = list->tail;
         new->head = list->head;
-        list->size = 0;
-        list->head = NULL;
-        list->tail = NULL;
+        new->tail = list->tail;
+        reset_dlist(list);
         return new;
     }
     struct dlist_item *i = list->head;
@@ -53,8 +58,8 @@ struct dlist *dlist_split_at(struct dlist *list, size_t index)
     list->tail = i->prev;
     if (list->tail != NULL)
         list->tail->next = NULL;
-    new->size = list->size - index - 1;
-    list->size = index + 1;
+    new->size = index + 1;
+    list->size = list->size - index - 1;
     new->head = i;
     if (new->head != NULL)
         new->head->prev = NULL;
@@ -77,8 +82,8 @@ void dlist_concat(struct dlist *list1, struct dlist *list2)
             list2->head->prev = list1->tail;
         list1->tail = list2->tail;
     }
+    list1->size += list2->size;
     list2->size = 0;
     list2->head = NULL;
     list2->tail = NULL;
-    list1->size += list2->size;
 }

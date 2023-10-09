@@ -17,7 +17,8 @@ struct dlist *dlist_init(void)
 
 int dlist_push_front(struct dlist *list, int element)
 {
-    assert(element >= 0);
+    if (element < 0)
+        return 0;
     struct dlist_item *new = malloc(sizeof(struct dlist_item));
     if (new == NULL)
         return 0;
@@ -45,7 +46,8 @@ void dlist_print(const struct dlist *list)
 
 int dlist_push_back(struct dlist *list, int element)
 {
-    assert(element >= 0);
+    if (element < 0)
+        return 0;
     struct dlist_item *new = malloc(sizeof(struct dlist_item));
     if (new == NULL)
         return 0;
