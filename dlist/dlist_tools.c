@@ -52,7 +52,7 @@ struct dlist_item *get_at(struct dlist *list, size_t index)
 int dlist_insert_at(struct dlist *list, int element, size_t index)
 {
     if (element < 0)
-        return 0;
+        return -1;
     if (index > list->size || list == NULL)
         return -1;
     struct dlist_item *l = get_at(list, index);
@@ -118,5 +118,7 @@ void dlist_clear(struct dlist *list)
         free(i);
         i = n;
     }
+    list->head = NULL;
+    list->tail = NULL;
     list->size = 0;
 }
