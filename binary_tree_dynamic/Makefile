@@ -7,7 +7,8 @@ CPPFLAGS = -fsanitize=address -g3
 LIBNAME = libbinary_tree.a
 EXE = main
 LDFLAGS =
-OBJ = binary_tree.o
+OBJ = binary_tree.o\
+	  dfs.o
 
 library: $(OBJ)
 	ar -rc $(LIBNAME) $^
