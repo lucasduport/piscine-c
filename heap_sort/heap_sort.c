@@ -22,17 +22,17 @@ void heapify(int *array, size_t size)
 {
     if (size == 0 || size == 1)
         return;
-    for (int i = size / 2; i >= 0; i--)
+    for (int i = size / 2 - 1; i >= 0; i--)
         maxH(array, size, i);
 }
 
 void heap_sort(int *array, size_t size)
 {
-    for (int i = size - 1; i >= 0; i--)
+    for (int i = size; i >= 1; i--)
     {
         heapify(array, i);
         int tmp = array[0];
-        array[0] = array[i];
-        array[i] = tmp;
+        array[0] = array[i - 1];
+        array[i - 1] = tmp;
     }
 }
