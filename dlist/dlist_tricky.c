@@ -39,19 +39,25 @@ struct dlist *dlist_split_at(struct dlist *list, size_t index)
     if (new == NULL)
         return NULL;
     reset_dlist(new);
-    if (list->size == 0 || index == 0 || index == list->size)
+    if (list->size == 0 || index == list->size)
+        return new;
+    else if (index == 0)
     {
+        new->size = list->size;
+        new->head = list->head;
+        new->tail = list->tail;
+        reset_dlist(list);
         return new;
     }
     struct dlist_item *i = list->head;
-    for (; index != 0; index--, i = i->next)
+    for (size_t j = index; j != 0; j--, i = i->next)
         continue;
     new->tail = list->tail;
     list->tail = i->prev;
     if (list->tail != NULL)
         list->tail->next = NULL;
-    new->size = index + 1;
-    list->size = list->size - index - 1;
+    new->size = list->size - index;
+    list->size = index;
     new->head = i;
     if (new->head != NULL)
         new->head->prev = NULL;
