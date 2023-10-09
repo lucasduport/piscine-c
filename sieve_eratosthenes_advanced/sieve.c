@@ -11,7 +11,7 @@ void sieve(int n)
     {
         if (marked[i / 2] == 0)
         {
-            for (int j = 3 * i; j <= n; j += i * 2)
+            for (int j = 3 * i; j < n; j += i * 2)
             {
                 if (marked[j / 2] == 0)
                     cnt--;
