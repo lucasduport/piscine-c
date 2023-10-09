@@ -35,6 +35,8 @@ static bool my_strcmp(const char *s1, const char *s2)
 
 bool variant_equal(const struct variant *left, const struct variant *right)
 {
+    if (left == NULL || right == NULL)
+        return false;
     if (left->type == right->type)
     {
         if (left->type == TYPE_INT)
@@ -67,9 +69,9 @@ float variant_sum(const struct variant *array, size_t len)
     for (size_t i = 0; i < len; i++)
     {
         if (array->type == TYPE_FLOAT)
-            res += array->value.float_v;
+            res += array[i].value.float_v;
         if (array->type == TYPE_INT)
-            res += array->value.int_v;
+            res += array[i].value.int_v;
     }
     return res;
 }
