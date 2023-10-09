@@ -14,8 +14,8 @@ OBJ = add.o \
 	  print.o
 
 
-$(LIBNAME): $(OBJ)
-	ar -rc $@ $^
+library: $(OBJ)
+	ar -rc $(LIBNAME) $^
 
 %.o: %.c
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $^
