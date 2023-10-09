@@ -6,7 +6,7 @@ void sieve(int n)
     if (n <= 2)
         return;
     int cnt = n / 2;
-    char *marked = calloc(n / 2, sizeof(char));
+    char *marked = calloc(n / 2 + 1, sizeof(char));
     for (int i = 3; i * i <= n; i += 2)
     {
         if (marked[i / 2] == 0)
