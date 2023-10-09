@@ -30,18 +30,15 @@ void fifo_pop(struct fifo *fifo)
         return;
     if (fifo->size == 1)
     {
-        free(fifo->tail);
+        free(fifo->head);
         fifo->tail = NULL;
         fifo->head = NULL;
         fifo->tail = 0;
         return;
     }
     struct list *h = fifo->head;
-    for (; h->next != fifo->tail; h = h->next)
-        continue;
-    fifo->tail = h;
-    free(h->next);
-    h->next = NULL;
+    fifo->head = h->next;
+    free(h);
     fifo->size--;
     if (fifo->size == 1)
         fifo->head = fifo->tail;
@@ -49,16 +46,9 @@ void fifo_pop(struct fifo *fifo)
 
 void fifo_print(const struct fifo *fifo)
 {
-    int *values = malloc(sizeof(int) * fifo->size);
     struct list *l = fifo->head;
-    size_t i = 0;
-    for (; l != NULL; i++, l = l->next)
+    for (; l != NULL; l = l->next)
     {
-        values[i] = l->data;
+        printf("%d\n", l->data);
     }
-    for (int j = i - 1; j >= 0; j--)
-    {
-        printf("%d\n", values[j]);
-    }
-    free(values);
 }
