@@ -1,10 +1,11 @@
 #$@: gets the name of the Makefile rule
 #$^: gets all the prerequisites
 #$<: gets the first prerequisite
-
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -std=c99 -Wvla -pedantic
 CPPFLAGS = -fsanitize=address -g3
+LIBNAME = libheap.a
+EXE = main
 LDFLAGS =
 OBJ = add.o \
 	  create.o \
@@ -12,17 +13,18 @@ OBJ = add.o \
 	  pop.o \
 	  print.o
 
-library: $(OBJ)
-	ar -rc libheap.a $^
+
+$(LIBNAME): $(OBJ)
+	ar -rc $@ $^
 
 %.o: %.c
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $^
 
-main: main.o $(OBJ)
+$(EXE): main.o $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 debug: LDFLAGS += -g3 -fsanitize=address
-debug: main
+debug: $(EXE)
 
 clean:
-	$(RM) *.o main libheap.a
+	$(RM) *.o $(EXE) $(LIBNAME)

@@ -3,27 +3,30 @@
 
 #include "heap.h"
 
-static void maxH(int arr[], int s, size_t i)
+static void maxH(int arr[], size_t s, size_t i)
 {
-    int max = i;
-    int l = 2 * i + 1;
-    int r = 2 * i + 2;
-    if (l < s && l > arr[l])
-        max = l;
-    if (r < s && r > arr[l])
-        max = r;
-    int tmp = arr[i];
-    arr[i] = arr[max];
-    arr[max] = tmp;
+    size_t maxI = i;
+    size_t l = 2 * i + 1;
+    size_t r = 2 * i + 2;
+    if (l < s && arr[l] > arr[maxI])
+        maxI = l;
+    if (r < s && arr[r] > arr[maxI])
+        maxI = r;
+    if (maxI != i)
+    {
+        int tmp = arr[i];
+        arr[i] = arr[maxI];
+        arr[maxI] = tmp;
+        maxH(arr, s, maxI);
+    }
 }
 
 static void make_it_h(struct heap *h)
 {
-    size_t n = h->size;
-    for (size_t i = 0; i < n / 2 - 1; i++)
-    {
+    if (h->size == 0 || h->size == 1)
+        return;
+    for (int i = h->size / 2 - 1; i >= 0; i--)
         maxH(h->array, h->size, i);
-    }
 }
 
 int pop(struct heap *heap)
