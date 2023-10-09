@@ -34,6 +34,7 @@ void fifo_pop(struct fifo *fifo)
         fifo->tail = NULL;
         fifo->head = NULL;
         fifo->tail = 0;
+        fifo->size--;
         return;
     }
     struct list *h = fifo->head;
