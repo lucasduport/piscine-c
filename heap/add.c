@@ -30,10 +30,10 @@ static void make_it_h(struct heap *h)
 
 void add(struct heap *heap, int val)
 {
-    if (heap->size + 1 > heap->capacity)
+    if ((heap->size + 1) > heap->capacity)
     {
         heap->capacity *= 2;
-        heap = realloc(heap, heap->capacity * sizeof(int));
+        heap->array = realloc(heap->array, heap->capacity * sizeof(int));
         if (heap == NULL)
             return;
     }

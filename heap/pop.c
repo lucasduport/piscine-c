@@ -36,7 +36,7 @@ int pop(struct heap *heap)
     if (heap->size < heap->capacity / 2 && heap->capacity > 8)
     {
         heap->capacity /= 2;
-        heap = realloc(heap, sizeof(int) * heap->capacity);
+        heap->array = realloc(heap->array, sizeof(int) * heap->capacity);
     }
     int res = heap->array[0];
     heap->array[0] = heap->array[heap->size];

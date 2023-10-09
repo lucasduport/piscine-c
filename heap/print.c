@@ -13,7 +13,7 @@ static void DFS(const struct heap *h, size_t i)
         printf(" ");
         DFS(h, 2 * i + 1);
     }
-    if (2 * i + 1 < h->size)
+    if (2 * i + 2 < h->size)
     {
         printf(" ");
         DFS(h, 2 * i + 2);
