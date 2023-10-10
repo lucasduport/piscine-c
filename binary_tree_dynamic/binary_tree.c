@@ -19,9 +19,9 @@ static int is_perf_rec(const struct binary_tree *tree, int n, int p)
         return (p == n + 1);
     else if (tree->left == NULL || tree->right == NULL)
         return 0;
-    if (is_perf_rec(tree->left, n + 1, p))
+    if (is_perf_rec(tree->left, n + 1, p) == 0)
         return 0;
-    if (is_perf_rec(tree->right, n + 1, p))
+    if (is_perf_rec(tree->right, n + 1, p) == 0)
         return 0;
     return 1;
 }
@@ -98,15 +98,15 @@ int is_bst(const struct binary_tree *tree)
         return 1;
     int lm = get_max_bst(tree->left);
     int rm = get_min_bst(tree->right);
-    if (lm >= tree->data || rm < tree->data)
+    if (lm > tree->data || rm <= tree->data)
         return 0;
     if (tree->left != NULL && tree->left->data >= tree->data)
-    {
         return 0;
-    }
     if (tree->right != NULL && tree->right->data < tree->data)
-    {
         return 0;
-    }
-    return is_bst(tree->left) & is_bst(tree->right);
+    if (is_bst(tree->left) == 0)
+        return 0;
+    if (is_bst(tree->right) == 0)
+        return 0;
+    return 1;
 }
