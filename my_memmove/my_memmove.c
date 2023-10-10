@@ -2,13 +2,19 @@
 
 void *my_memmove(void *dest, const void *src, size_t n)
 {
+    if (src == dest || n == 0)
+        return dest;
     char *cDest = dest;
     const char *cSrc = src;
-    for (size_t i = 0; i < n; i++)
+    if (cSrc <= cDest && cDest < cSrc + n)
     {
-        if (cSrc <= cDest + i && cDest + i < cSrc + n)
-            continue;
-        cDest[i] = cSrc[i];
+        for (int i = n - 1; i >= 0; i--)
+            cDest[i] = cSrc[i];
+    }
+    else
+    {
+        for (int i = 0; i < n; i++)
+            cDest[i] = cSrc[i];
     }
     return dest;
 }
