@@ -26,17 +26,20 @@ void next_step(unsigned char *light)
     if (*light == mask)
     {
         *light = *light << 1;
+        *light = *light & 15;
         return;
     }
-    mask += 1 << 3;
+    mask = (1 << 1) | (1 << 3);
     if (*light == mask)
     {
-        *light = ~(*light);
+        *light = ~(mask);
+        *light = *light & 15;
         return;
     }
-    mask = 3;
+    mask = 1 | (1 << 1);
     if (*light == mask)
     {
+        *light = *light & 15;
         *light = mask << 1;
     }
 }
