@@ -19,7 +19,7 @@ int simple_fnmatch(const char *pattern, const char *string)
     int escaping = -2;
     int lenP = my_strlen(pattern);
     int lenS = my_strlen(string);
-    for (; i <= lenS && j < lenP;)
+    for (; i <= lenS && j <= lenP;)
     {
         if (pattern[j] == '\\')
         {
@@ -33,17 +33,10 @@ int simple_fnmatch(const char *pattern, const char *string)
         }
         else if (pattern[j] == '*' && escaping != j - 1)
         {
-            j++;
             while (pattern[j] != 0 && (pattern[j] == '*' || pattern[j] == '?'))
                 j++;
-            if (pattern[j] != 0)
-            {
-                while (pattern[j] != 0 && string[i] != 0
-                       && string[i] != pattern[j])
-                    i++;
-            }
-            else
-                return 0;
+            while (string[i] != 0 && string[i] != pattern[j])
+                i++;
         }
         else if (string[i] != pattern[j])
             return FNM_NOMATCH;
@@ -53,5 +46,5 @@ int simple_fnmatch(const char *pattern, const char *string)
             j++;
         }
     }
-    return !(j >= lenP && i >= lenS);
+    return (j < lenP || i < lenS);
 }
