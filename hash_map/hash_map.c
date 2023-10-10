@@ -127,8 +127,7 @@ const char *hash_map_get(const struct hash_map *hash_map, const char *key)
 bool hash_map_remove(struct hash_map *hash_map, const char *key)
 {
     if (hash_map == NULL || hash_map->size == 0)
-        return NULL;
-
+        return false;
     size_t index = hash(key);
     if (index >= hash_map->size)
         index = index % hash_map->size;
@@ -143,7 +142,7 @@ bool hash_map_remove(struct hash_map *hash_map, const char *key)
     }
     while (l->next != NULL)
     {
-        if (l->next->key == key)
+        if (strcmp(l->next->key, key) == 0)
         {
             struct pair_list *toFree = l->next;
             l->next = l->next->next;
