@@ -19,7 +19,7 @@ int simple_fnmatch(const char *pattern, const char *string)
     int escaping = -2;
     int lenP = my_strlen(pattern);
     int lenS = my_strlen(string);
-    for (; i < lenS && j < lenP;)
+    for (; i <= lenS && j < lenP;)
     {
         if (pattern[j] == '\\')
         {
