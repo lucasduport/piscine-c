@@ -2,6 +2,18 @@
 
 #include "binary_tree.h"
 
+static int max(int a, int b)
+{
+    return (a > b) ? a : b;
+}
+
+int height(const struct binary_tree *tree)
+{
+    if (tree == NULL)
+        return -1;
+    return 1 + max(height(tree->left), height(tree->right));
+}
+
 int size(const struct binary_tree *tree)
 {
     if (tree == NULL)

@@ -3,27 +3,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static int max(int a, int b)
+static int prof(const struct binary_tree *tree)
 {
-    return (a > b) ? a : b;
+    int n = 0;
+    for (int n = 0; tree != NULL; n++, tree = tree->left)
+        continue;
+    return n;
 }
 
-int height(const struct binary_tree *tree)
+static int is_perf_rec(const struct binary_tree *tree, int n, int p)
 {
     if (tree == NULL)
-        return -1;
-    return 1 + max(height(tree->left), height(tree->right));
+        return 1;
+    if (tree->left == NULL && tree->right == NULL)
+        return (p == n + 1);
+    else if (tree->left == NULL || tree->right == NULL)
+        return 0;
+    if (is_perf_rec(tree->left, n + 1, p))
+        return 0;
+    if (is_perf_rec(tree->right, n + 1, p))
+        return 0;
+    return 1;
 }
 
 int is_perfect(const struct binary_tree *tree)
 {
-    if (tree == NULL)
-        return 1;
-    if (is_perfect(tree->left) == 0)
-        return 0;
-    if (is_perfect(tree->right) == 0)
-        return 0;
-    return 1;
+    int p = prof(tree);
+    return is_perf_rec(tree, 0, p);
 }
 
 static char is_cpl_rec(const struct binary_tree *tree, size_t size, size_t i)
@@ -92,10 +98,9 @@ int is_bst(const struct binary_tree *tree)
         return 1;
     int lm = get_max_bst(tree->left);
     int rm = get_min_bst(tree->right);
-    if (lm > tree->data || rm < tree->data)
+    if (lm >= tree->data || rm < tree->data)
         return 0;
-
-    if (tree->left != NULL && tree->left->data > tree->data)
+    if (tree->left != NULL && tree->left->data >= tree->data)
     {
         return 0;
     }
