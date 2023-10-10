@@ -23,19 +23,19 @@ void turn_off(unsigned char *light, unsigned char light_num)
 void next_step(unsigned char *light)
 {
     unsigned char mask = 1 << 1;
-    if ((*light & mask) == *light)
+    if (*light == mask)
     {
         *light = *light << 1;
         return;
     }
     mask += 1 << 3;
-    if ((*light & mask) == *light)
+    if (*light == mask)
     {
-        *light = ~*light;
+        *light = ~(*light);
         return;
     }
-    mask = 1 | (1 << 1);
-    if ((*light & mask) == *light)
+    mask = 3;
+    if (*light == mask)
     {
         *light = mask << 1;
     }
@@ -48,9 +48,9 @@ void reverse(unsigned char *light)
 
 void swap(unsigned char *l1, unsigned char *l2)
 {
-    if ((*l1 & *l2) == *l1)
+    if (*l1 == *l2)
         return;
-    unsigned char tmp = *l1 & 1;
-    *l1 = *l2 | 0;
-    *l2 = tmp & 1;
+    unsigned char tmp = *l1;
+    *l1 = *l2;
+    *l2 = tmp;
 }
