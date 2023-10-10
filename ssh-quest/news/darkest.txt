@@ -1,0 +1,1073 @@
+From: Narrator <narrator@ancestor.es>
+Date: Tue, 03 Feb 2015 12:00:00 +0200
+Subject: [HELP][SCRIPT] The entire Darkest Dungeon script
+Newsgroup: assistants.dungeon
+
+Salutations,
+
+# Intro cinematic
+
+Ruin has come to our family. You remember our venerable house, opulent
+and imperial. Gazing proudly from its stoic perch above the moor. I
+lived all my years in that ancient, rumor-shadowed manor. Fattened by
+decadence and luxury. And yet, I began to tire of conventional
+extravagance. Singular, unsettling tales suggested the mansion itself
+was a gateway to some fabulous and unnamable power. With relic and
+ritual, I bent every effort towards the excavation and recovery of
+those long-buried secrets, exhausting what remained of our family
+fortune on swarthy workmen and sturdy shovels. At last, in the
+salt-soaked crags beneath the lowest foundations we unearthed that
+damnable portal of antediluvian evil. Our every step unsettled the
+ancient earth but we were in a realm of death and madness! In the end,
+I alone fled laughing and wailing through those blackened arcades of
+antiquity. Until consciousness failed me. You remember our venerable
+house, opulent and imperial. It is a festering abomination! I beg you,
+return home, claim your birthright, and deliver our family from the
+ravenous clutching shadows of the Darkest Dungeon.
+
+# Tutorial lines
+
+## Tutorial cinematic
+
+You will arrive along the old road. It winds with a troubling,
+serpent-like suggestion through the corrupted countryside. Leading
+only, I fear, to ever more tenebrous places. There is a sickness in the
+ancient pitted cobbles of the old road and on its writhing path you
+will face viciousness, violence, and perhaps other damnably
+transcendent terrors. So steel yourself and remember: there can be no
+bravery without madness. The old road will take you to hell, but in
+that gaping abyss we will find our redemption.
+
+## Entering the Old Road
+
+Brigands have run of these lanes. Keep to the side path; the Hamlet is
+just ahead.
+
+## Entering the first battle
+
+Dispatch this thug in brutal fashion, that all may hear of your
+arrival!
+
+## Finding the first curio
+
+Leave nothing unchecked, there is much to be found in forgotten places.
+
+## Entering the second battle
+
+An ambush! Send these vermin a message: the rightful owner has
+returned, and their kind is no longer welcome.
+
+## Entering the Hamlet for the first time
+
+Welcome home, such as it is. This squalid hamlet, these corrupted
+lands, they are yours now, and you are bound to them.
+
+## Entering the "Embark" screen for the first time
+
+This sprawling estate, a Mecca of madness and morbidity. Your work
+begins...
+
+## Entering the "provisions" screen for the first time
+
+The cost of preparedness - measured now in gold, later in blood.
+
+## Entering a building for the first time
+
+### Stage Coach
+
+Women and men; soldiers and outlaws; fools and corpses. All will find
+their way to us now that the road is clear.
+
+### Tavern
+
+Fresh kegs, cards, and curtained rooms promise solace to the weary and
+the broken alike.
+
+### Abbey
+
+The cobwebs have been dusted, the pews set straight. The Abbey calls to
+the faithful...
+
+### Blacksmith
+
+The bellows blast once again! The forge stands ready to make weapons of
+war.
+
+### Guild
+
+Make no mistake, we will face ever greater threats. Our soldiers must
+be ready.
+
+### Survivalist
+
+At home in wild places, she is a stalwart survivor, and a strict
+instructor.
+
+### Nomad Wagon
+
+Trinkets and charms, gathered from all the forgotten corners of the
+earth...
+
+### Graveyard
+
+Most will end up here, covered in the poisoned earth, awaiting merciful
+oblivion.
+
+# Entering the hamlet
+
+
+  the tavern.
+
+  domain.
+
+  letter.
+
+
+  by decent folk.
+
+  glimmer of hope.
+
+  ...affected him.
+
+  the condition of surrounding acres.
+
+  must rely upon you to set it right.
+
+  was dead before they found me, and the letter was on its way.
+
+  be destroyed!
+
+  damnation.
+
+  affords you broad tolerance in your choice of means.
+
+
+
+  madness.
+
+  upon us all.
+
+  dimension of delirium are tenuously thin here...
+
+  mind. It was a yearning, a thirst for discovery that could be neither
+  numbed, nor sated.
+
+  transgressions.
+
+  final, crowning thing. I could not look, nor could I look away!
+
+# Upgrading buildings
+
+## Stage Coach
+
+
+  the damned.
+
+  use this.
+
+## Tavern
+
+
+  threshold with coin in hand.
+
+
+## Abbey
+
+
+  bloodshed.
+
+
+## Blacksmith
+
+
+  life.
+
+
+## Guild
+
+
+  face.
+
+  arithmetic of combat.
+
+## Survivalist
+
+  persist, and overcome.
+
+
+  survive!
+
+## Nomad Wagon
+
+
+  against evil.
+
+  places.
+
+## Sanitarium
+
+  the mind.
+
+  sword cannot.
+
+  soul.
+
+# Recruiting heroes
+
+## Abomination
+
+Tortured and reclusive... this man is more dangerous than he seems...
+
+## Antiquarian
+
+She searches where others will not go... and sees what others will not
+see.
+
+## Arbalest
+
+Shoot, bandage and pillage: the dancing steps of war.
+
+## Bounty Hunter
+
+The thrill of the hunt... The promise of payment...
+
+## Crusader
+
+A mighty sword-arm anchored by a holy purpose. A zealous warrior.
+
+## Grave Robber
+
+To those with a keen eye, gold gleams like a dagger's point.
+
+## Hellion
+
+Barbaric rage and unrelenting savagery make for a powerful ally.
+
+## Highwayman
+
+Elusive, evasive, persistent. Righteous traits for a rogue.
+
+## Hound Master
+
+A lawman and his faithful beast. A bond forged by battle and bloodshed.
+
+## Jester
+
+He will be laughing still... at the end.
+
+## Leper
+
+This man understands that adversity and existence are one and the same.
+
+## Man-At-Arms
+
+The raw strength of youth may be spent, but his eyes hold the secrets
+of a hundred campaigns.
+
+## Occultist
+
+To fight the abyss, one must know it...
+
+## Plague Doctor
+
+What better laboratory than the blood-soaked battlefield?
+
+## Vestal
+
+A sister of battle. Pious and unrelenting.
+
+## Musketeer
+
+A champion markswoman keen for a new kind of challenge.
+
+# Dismissing a hero from the roster
+
+
+
+
+
+  who remain.
+
+  stock.
+
+  more good to us.
+
+
+# Starting an expedition to kill a boss
+
+## Ruins
+
+### Prophet
+
+1. Excavations beneath the manor were well underway, when a particular
+   ragged indigent arrived in the hamlet. This filthy, toothless
+   miscreant boasted an uncanny knowledge of my ambitions and
+   prognosticated publicly that left unchecked, I would soon unleash
+   doom upon the world.
+
+1. This raving creature had to be silenced, but doing so proved
+   maddeningly impossible. How had he survived the stockades, the icy
+   waters, and the knives I delivered so enthusiastically into his
+   back? How had he returned time and time again to rouse the townsfolk
+   with his wild speculations and prophecies?
+
+1. Finally, resigned to his uncommon corporeal resilience, I lured him
+   to the dig. There, I showed him the Thing, and detailed the full
+   extent of my plans. Triumphantly, I watched as he tore his eyes from
+   their sockets, and ran shrieking into the shadows - wailing
+   maniacally that the end was upon us all.
+
+### Necromancer
+
+1. Mastery over life and death was chief among my early pursuits. I
+   began in humility, but my ambition was limitless. Who could have
+   divined the prophetic import of something as unremarkable as a
+   twitch in the leg of a dead rat?
+
+1. I entertained a delegation of experts from overseas, eager to plumb
+   the depths of their knowledge and share with them certain techniques
+   and alchemical processes I had found to yield wondrous and
+   terrifying results. Having learned all I could from my visiting
+   guests, I murdered them as they slept.
+
+1. I brought my colleagues back with much of their intellect intact, a
+   remarkable triumph for even the most experienced necromancer. Freed
+   from the trappings of their humanity, they plied their terrible
+   trade anew - the dead reviving the dead, on and on down the years...
+   forever.
+
+## Weald
+
+### Hag
+
+1. I had collected many rare and elusive volumes on ancient herbal
+   properties, and was set to enjoy several weeks immersed in
+   comfortable study. My work was interrupted, however, by a singularly
+   striking young woman who insisted on repeated calls to the house.
+
+1. Her knowledge of horticulturalism, and its role in various arcane
+   practices impressed me greatly. My licentious impulse gave way to a
+   genuine, professional respect, and together, we began to plant,
+   harvest, and brew.
+
+1. As time wore on, her wild policy of self-experimentation grew
+   intolerable. She quaffed all manner of strange fungii, herbs and
+   concoctions, intent on gaining some insight into the horror we both
+   knew to be growing beneath us. The change in her was appalling, and,
+   no longer able to stomach it, I sent her to live in the Weald, where
+   her wildness would be welcomed.
+
+### Brigand Pounder
+
+1. Simple folk are by their nature loquacious, and the denizens of the
+   Hamlet were no exception. It was not long before rumors of my morbid
+   genius and secretive excavations began to fuel local legend. In the
+   face of my increasingly egregious flaunting of public taboos, awe
+   turned to ire, and demonstrations were held in the town square.
+
+1. The wild whispers of heresy roused the rabble to violent action.
+   Such was the general air of rebellion that even my generous offer of
+   gold to the local constabulary was rebuffed! To reassert my rule, I
+   sought out unscrupulous men skilled in the application of force.
+   Tight-lipped and terrifying, these mercenaries brought with them a
+   war machine of terrible implication.
+
+1. Eager to end the tiresome domestic distraction, I instructed my
+   newly formed militia of hardened bandits, brigands and killers to go
+   forth and do their work. Compliance and order were restored, and the
+   noisome population of the Hamlet was culled to more... manageable
+   numbers.
+
+## Warrens
+
+### Swine Prince
+
+1. The ways and rituals of blood sacrifice are difficult to master.
+   Those from beyond require a physical vessel if they are to make the
+   crossing into our reality. The timing of the chants is imperative -
+   without the proper utterances at precise intervals, the process can
+   fail spectacularly.
+
+1. My first attempts at summoning were crude and the results,
+   disappointing. I soon found however, that the type and condition of
+   the host's meat was a critical factor. The best results came from
+   pigs, whose flesh is most like that of man.
+
+1. The Great Thing I had managed to bring through was brutish and
+stupid. Moreover, it required prodigious amounts of meat to sustain
+itself, but this was only a trifling concern – after all, I had a
+village full of it.
+
+### Flesh
+
+1. My zeal for blood rituals and summoning rites had begun to ebb as
+   each attempt invariably brought only failure, and disappointment.
+   Progress was halting, and the rapidly accumulating surplus of wasted
+   flesh had become... burdensome.
+
+1. I could not store such a prodigious amount of offal, nor could I rid
+   myself of it easily, possessed as it was by unnameable things from
+   outer spheres. When excavations beneath the Manor broke through into
+   an ancient network of aqueducts and tunnels, I knew I had found a
+   solution to the problem of disposal.
+
+1. The spasmodically squirming, braying, and snorting half-corpses were
+   heaped each upon the other until at last I was rid of them. The
+   Warrens became a landfill of snout and hoof, gristle and bone – a
+   mountainous, twitching mass of misshapen flesh fusing itself
+   together in the darkness.
+
+## Cove
+
+### Siren
+
+1. My lofty position wasn't always accompanied by the fear of office,
+   and there was a time I could walk the streets or raise a glass in
+   the tavern without concern for molestation. Faithful as the tide,
+   one precocious village waif made it her hobby to shadow my every
+   errand. It was charming then, troublesome later.
+
+1. In financial desperation, I struck a bargain with the ancient things
+   that surfaced in search of sacrifice when the moon was right. Their
+   price was the delivery of an obscure idol and one other item of more
+   troubling portent. The pact struck, my newfound accomplices slipped
+   silently beneath the brackish water. A fearful stirring at the edge
+   of the torchlight betrayed a familiar witness, and gifted me with
+   malign inspiration.
+
+1. Under the blood moon, I lured my wide-eyed prey to the pier’s edge.
+   Before she could properly appreciate her position, I clamped on a
+   manacle, chaining her to the leering idol. A small push was
+   sufficient to send both into the icy waters. And when at length the
+   tide receded, jewels of the most magnificent grandeur lay scattered
+   upon the shore.
+
+### Drowned Crew
+
+1. Prying eyes had become a nuisance along the Old Road, and so I
+   undertook to receive my most curious deliveries by way of marine
+   shipments. A sheltered jetty was accessible by a narrow stone stair
+   off the back of the manor, and a discreet system of pulleys could
+   hoist even the heaviest prizes up the rock face from a securely tied
+   dinghy below.
+
+1. I employed a crew of particularly unsavory mariners, who, for a
+   time, sailed the four corners at my behest - retrieving many
+   valuable artifacts, relics and rare texts. Predictably, they
+   increased their tariffs to counter my intense stipulations of
+   secrecy. Such resources had long been exhausted, of course, and so I
+   prepared an... alternative payment.
+
+1. While the greedy dogs slept off their revelry, I hexed their anchor
+   with every twisted incantation I could muster - imbuing it with the
+   weight of my ambition, and my contempt for their crude extortion.
+   At the witching hour, the anchor pulled with preternatural force,
+   dragging craft and crew down into the depths. They must have cried
+   out, but no sound escaped the swirling black waters...
+
+# Entering the Ruins
+
+## Explore mission
+
+Pace out the halls of your lineage, once familiar, now foreign.
+
+## Cleanse mission
+
+The fiends must be driven back, and what better place to begin than the
+seat of our noble line?
+
+## Activate mission
+
+Can the defiled be consecrated? Can the fallen find rest?
+
+## Gather mission
+
+There is power in symbols. Collect the scattered scraps of faith and
+give comfort to the masses.
+
+## boss mission against the Necromancer
+
+A devil walks these halls... only the mad or the desperate go in
+search of him.
+
+## boss mission against the Prophet
+
+The echoes of his mindless tittering reverberate maddeningly...
+
+# Entering the Weald
+
+## Explore mission
+
+I knew all these paths once; now they are as twisted as my own
+ambitions.
+
+## Cleanse mission
+
+Corruption has soaked the soil, sapping all good life from these groves
+
+## Activate mission
+
+Excise the fungal tumors and the land may yet live.
+
+## Gather mission
+
+Our land is remote and unneighbored. Every lost resource must be
+recovered.
+
+## boss mission against the Hag
+
+There is method in the wild corruption here. It bears a form both
+wretched and malevolent.
+
+## boss mission against the Brigand Pounder
+
+The smell of sulfur and gunpowder hangs in the air, the war machine is
+close.
+
+# Entering the Warrens
+
+## Explore mission
+
+To prosecute our war against the Swine, we must first scout their
+squalid homes.
+
+## Cleanse mission
+
+They breed quickly down there in the dark, but perhaps we can slay them
+even faster.
+
+## Activate mission
+
+The Swine draw power from their horrid markings and crude idols - tear
+them down!
+
+## Gather mission
+
+Even the fiercest beast will lay down when it has not eaten. Steal
+their food.
+
+## boss mission against the Swine Prince
+
+A nameless abomination, a testament to my failures - it must be
+destroyed!
+
+## boss mission against the Flesh
+
+The thing is more terrible than I can describe - an incoherent jumble
+of organ, sinew and bone.
+
+# Entering the Coves
+
+## Explore mission
+
+The smell of rotting fish is almost unbearable...
+
+## Cleanse mission
+
+These salt-soaked caverns are teeming with pelagic nightmares - they
+must be flushed out!
+
+## Activate mission
+
+The flopping, fish-like things abhore the warding sigils. Let us claim
+this place anew!
+
+## Gather mission
+
+Recover these lost shipments of rarities, that we may prevent them from
+falling into even less scrupulous hands...
+
+## boss mission against the Siren
+
+I always wondered what became of the unfortunate little waif...
+
+## boss mission against the Drowned Crew
+
+The poor devils, chained and drowning for eternity...
+
+# Succeeding an expedition
+
+## Ruins
+
+### Explore
+
+  to feel familiar.
+
+  hold.
+
+### Cleanse
+
+
+
+### Activate
+
+
+
+### Gather
+
+
+  restored.
+
+### boss (Prophet)
+
+  dead.
+
+  they are ridiculous.
+
+### boss (Necromancer)
+
+
+  finally fail?
+
+## Weald
+
+### Explore
+
+  troubled estate.
+
+  unharried!
+
+### Cleanse
+
+fought.
+
+
+### Activate
+
+
+
+### Gather
+
+  struggling Hamlet.
+
+  contagion.
+
+### boss (Hag)
+
+  will be eaten.
+
+
+### boss (Brigand Pounder)
+
+  headstones.
+
+  strength!
+
+## Warrens
+
+### Explore
+
+
+
+### Cleanse
+
+  ending them.
+
+
+### Activate
+
+
+  such a thing were possible.
+
+### Gather
+
+  Swine will not.
+
+
+### boss (Flesh)
+
+
+  terrible existence.
+
+### boss (Swine Prince)
+
+
+  soon enough.
+
+## Cove
+
+### Explore
+
+  traversable.
+
+  tomb...
+
+### Cleanse
+
+
+  a thing.
+
+### boss (Siren)
+
+  place in the sane world!
+
+  the routes are safe.
+
+### boss (Drowned Crew)
+
+
+  beyond the light's reach.
+
+# Failing an expedition
+
+
+
+
+
+
+
+
+  victory will come.
+
+  accomplishment.
+
+defeat.
+
+
+# Encountering a boss
+
+### The Necromancer
+
+Towering, fierce, terrible. Nightmare made material!
+
+### The Prophet
+
+The madman hides there, behind the pews, spouting his mindless drivel!
+
+### The Hag
+
+Twisted and maniacal - a slathering testament to the powers of
+corruption!
+
+### The Brigand Pounder
+
+A marvel of technology - an engine of destruction!
+
+### The Swine Prince
+
+It is a travesty - a blundering mountain of hatred and rage.
+
+### The Flesh
+
+Squirming, contorting and ever-expanding...this horror must be unmade!
+
+### The Siren
+
+The aquatic devils have remade the poor girl in their image! She is
+their queen, and their slave!
+
+### The Drowned Crew
+
+Even in death, the captain shouts his orders, and the crew obeys...
+
+# Encountering a mini-boss
+
+## The Collector
+
+### Encounter
+
+
+
+### Victory
+
+
+
+## The Shambler
+
+### Encounter
+
+
+
+### Victory
+
+
+
+# Raising the Light Meter to 100
+
+
+  follow it.
+
+
+  clear.
+
+
+# Light Meter dropping to 0
+
+
+
+  gold."
+
+  this place.
+
+
+# Obtaining loot
+
+
+
+  home.
+
+
+
+
+
+# Camping
+
+
+
+
+  horrors.
+
+
+# Getting hit by a trap
+
+
+  own eyes.
+
+
+
+
+
+
+
+# Facing obstacles
+
+### Finding an obstacle in the Ruins
+
+Even the cold stone seems bent on preventing passage.
+
+### Finding an obstacle in the Warrens
+
+Such blockages are unsurprising – these tunnels predate even the
+earliest settlers.
+
+### Finding an obstacle in the Weald
+
+Nature herself - a victim to this spreading corruption: malformed with
+misintent.
+
+### Finding an obstacle in the Cove
+
+Another mariner... Another misfortune.
+
+### Removing an obstacle without a shovel
+
+Without tools of iron, you must rely on flesh and indefatigable purpose.
+
+# Failing to satiate the party
+
+the mind…
+
+
+
+
+
+# Healing
+
+## Receiving healing through skills and/or food
+
+
+
+
+
+## Getting a critical hit when healing
+
+
+
+
+
+## Healing while at Death's Door
+
+
+
+
+
+# Killing an enemy
+
+## Killing the first enemy
+
+
+
+
+
+
+## Killing a weak enemy
+
+
+
+
+
+
+## Killing an enemy with a strong attack
+
+
+
+
+
+
+## Killing a large enemy
+
+
+
+exsanguination be considered a virtue.
+
+
+
+## Killing an enemy with blight or bleed
+
+
+
+
+
+# Striking a critical hit
+
+
+
+
+
+
+
+
+
+
+# Receiving a critical hit
+
+
+
+
+
+
+
+
+
+
+# Receiving a Debuff
+
+
+
+
+
+## Being inflicted Horror
+
+
+
+
+
+# Receiving a Buff
+
+
+
+
+
+# Having a hero reach Death's Door
+
+
+
+
+
+
+# Having a hero receive the deathblow
+
+
+
+
+
+
+
+# Winning a battle
+
+
+
+
+
+
+
+
+
+
+# Filling your inventory
+
+
+
+
+
+# Failing to retreat from a battle
+
+
+
+
+# Retreating from a battle
+
+
+
+
+# Having a hero reach 50% stress or health
+
+
+# Gaining afflictions
+
+### Generic affliction
+
+
+
+
+
+
+
+
+
+
+### Abusive
+
+Frustration and fury, more destructive than a hundred cannons.
+
+### Fearful
+
+Fear and frailty finally claim their due.
+
+### Paranoid
+
+The walls close in, the shadows whisper of conspiracy!
+
+### Hopeless
+
+There can be no hope in this hell, no hope at all.
+
+### Selfish
+
+Self-preservation is paramount - at any cost!
+
+### Masochistic
+
+Those who covet injury find it in no short supply.
+
+### Irrational
+
+Reeling, gasping, taken over the edge into madness!
+
+# Gaining virtues
+
+### Courageous
+
+A moment of valor shines brightest against a backdrop of despair.
+
+### Vigorous
+
+Adversity can foster hope, and resilience.
+
+### Focused
+
+A moment of clarity in the eye of the storm...
+
+### Powerful
+
+Anger is power - unleash it!
+
+### Stalwart
+
+Many fall in the face of chaos; but not this one, not today.
+
+Donjon-le-plus-sombre-ment,
+
+-- 
+Narrator
+"Plague Doctor my beloved <3"
