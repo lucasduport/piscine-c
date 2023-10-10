@@ -16,11 +16,37 @@ struct hash_map *hash_map_init(size_t size)
     return h;
 }
 
+static void *hash_map_update(const struct hash_map *hash_map, const char *key,
+                             char *value)
+{
+    if (hash_map == NULL || hash_map->size == 0)
+        return NULL;
+    size_t index = hash(key);
+    if (index >= hash_map->size)
+        index = index % hash_map->size;
+    struct pair_list *chained = hash_map->data[index];
+    while (chained != NULL)
+    {
+        if (strcmp(chained->key, key) == 0)
+        {
+            chained->value = value;
+        }
+        chained = chained->next;
+    }
+    return NULL;
+}
+
 bool hash_map_insert(struct hash_map *hash_map, const char *key, char *value,
                      bool *updated)
 {
     if (hash_map == NULL || hash_map->size == 0)
         return false;
+    if (hash_map_get(hash_map, key) != NULL)
+    {
+        *updated = true;
+        hash_map_update(hash_map, key, value);
+        return true;
+    }
     size_t index = hash(key);
     if (index >= hash_map->size)
         index = index % hash_map->size;
@@ -29,9 +55,8 @@ bool hash_map_insert(struct hash_map *hash_map, const char *key, char *value,
     {
         return false;
     }
+    *updated = false;
     struct pair_list *list = hash_map->data[index];
-    if (updated != NULL)
-        *updated = true;
     new->key = key;
     new->value = value;
     new->next = list;
@@ -101,6 +126,9 @@ const char *hash_map_get(const struct hash_map *hash_map, const char *key)
 
 bool hash_map_remove(struct hash_map *hash_map, const char *key)
 {
+    if (hash_map == NULL || hash_map->size == 0)
+        return NULL;
+
     size_t index = hash(key);
     if (index >= hash_map->size)
         index = index % hash_map->size;
