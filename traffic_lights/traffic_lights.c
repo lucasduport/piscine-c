@@ -50,7 +50,7 @@ void swap(unsigned char *l1, unsigned char *l2)
 {
     if ((*l1 & *l2) == *l1)
         return;
-    unsigned char tmp = 1 & *l1;
+    unsigned char tmp = *l1 & 1;
     *l1 = *l2 | 0;
     *l2 = tmp & 1;
 }
