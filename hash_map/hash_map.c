@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct hash_map *hash_map_init(size_t size)
 {
@@ -18,6 +19,8 @@ struct hash_map *hash_map_init(size_t size)
 bool hash_map_insert(struct hash_map *hash_map, const char *key, char *value,
                      bool *updated)
 {
+    if (hash_map == NULL || hash_map->size == 0)
+        return false;
     size_t index = hash(key);
     if (index >= hash_map->size)
         index = index % hash_map->size;
@@ -28,7 +31,7 @@ bool hash_map_insert(struct hash_map *hash_map, const char *key, char *value,
     }
     struct pair_list *list = hash_map->data[index];
     if (updated != NULL)
-        *updated = (list != NULL) ? true : false;
+        *updated = true;
     new->key = key;
     new->value = value;
     new->next = list;
@@ -38,6 +41,13 @@ bool hash_map_insert(struct hash_map *hash_map, const char *key, char *value,
 
 void hash_map_free(struct hash_map *hash_map)
 {
+    if (hash_map == NULL)
+        return;
+    if (hash_map->data == NULL)
+    {
+        free(hash_map->data);
+        return;
+    }
     struct pair_list **l = hash_map->data;
     for (size_t i = 0; i < hash_map->size; i++)
     {
@@ -74,13 +84,15 @@ void hash_map_dump(struct hash_map *hash_map)
 
 const char *hash_map_get(const struct hash_map *hash_map, const char *key)
 {
+    if (hash_map == NULL || hash_map->size == 0)
+        return NULL;
     size_t index = hash(key);
     if (index >= hash_map->size)
         index = index % hash_map->size;
     struct pair_list *chained = hash_map->data[index];
     while (chained != NULL)
     {
-        if (chained->key == key)
+        if (strcmp(chained->key, key) == 0)
             return chained->value;
         chained = chained->next;
     }
