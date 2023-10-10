@@ -7,14 +7,14 @@ int main(int argc, char *argv[])
 {
     if (argc != 2)
     {
-        write(STDERR_FILENO, "Invalid argument number\n", 25);
+        write(STDERR_FILENO, "Invalid argument number\n", 24);
         return 1;
     }
 
     int f_read = open(argv[1], O_RDONLY);
     if (f_read == -1)
     {
-        write(STDERR_FILENO, "Could not open file\n", 21);
+        write(STDERR_FILENO, "Could not open file\n", 20);
         return 1;
     }
     char res[] = "  ";
@@ -49,10 +49,10 @@ int main(int argc, char *argv[])
     }
     if (finish == 0)
     {
-        write(STDERR_FILENO, "File is not long enough\n", 25);
+        write(STDERR_FILENO, "File is not long enough\n", 24);
         return 1;
     }
-    write(STDOUT_FILENO, res, 3);
+    write(STDOUT_FILENO, res, 2);
     write(STDOUT_FILENO, "\n", 1);
     return 0;
 }
