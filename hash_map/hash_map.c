@@ -134,7 +134,7 @@ bool hash_map_remove(struct hash_map *hash_map, const char *key)
     struct pair_list *l = hash_map->data[index];
     if (l == NULL)
         return false;
-    if (l->key == key)
+    if (strcmp(l->key, key) == 0)
     {
         hash_map->data[index] = l->next;
         free(l);
