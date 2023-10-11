@@ -9,7 +9,7 @@ struct vector *vector_append(struct vector *v, int elt)
         return NULL;
     else if (v->size + 1 > v->capacity)
     {
-        v = vector_resize(v, v->size + 1);
+        v = vector_resize(v, v->capacity * 2);
         if (v == NULL)
             return NULL;
     }
@@ -46,7 +46,7 @@ struct vector *vector_reset(struct vector *v, size_t n)
 
 struct vector *vector_insert(struct vector *v, size_t i, int elt)
 {
-    if (i > v->size)
+    if (v == NULL || i > v->size)
         return NULL;
     else if (i == v->size)
         return vector_append(v, elt);
@@ -54,7 +54,7 @@ struct vector *vector_insert(struct vector *v, size_t i, int elt)
     {
         if (v->size + 1 > v->capacity)
         {
-            v = vector_resize(v, v->size + 1);
+            v = vector_resize(v, v->capacity * 2);
             if (v == NULL)
                 return NULL;
         }
@@ -73,7 +73,7 @@ struct vector *vector_insert(struct vector *v, size_t i, int elt)
 
 struct vector *vector_remove(struct vector *v, size_t i)
 {
-    if (i >= v->size)
+    if (v == NULL || i >= v->size)
         return NULL;
     else
     {
