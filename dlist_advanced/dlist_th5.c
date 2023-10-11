@@ -29,7 +29,9 @@ unsigned int min(unsigned int a, unsigned int b)
 static unsigned int cmp_val(struct dlist *d1, struct dlist *d2, size_t i1,
                             size_t i2)
 {
-    return dlist_get(d1, i1) && dlist_get(d2, i2);
+    if (dlist_get(d1, i1) == dlist_get(d2, i2))
+        return 0;
+    return 1;
 }
 
 unsigned int dlist_levenshtein(struct dlist *list1, struct dlist *list2)

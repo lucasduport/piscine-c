@@ -4,7 +4,7 @@
 
 void dlist_shift(struct dlist *list, int offset)
 {
-    if (list == NULL)
+    if (list == NULL || list->size == 0)
         return;
     int s = list->size;
     int newOffset = (offset % s + s) % s;
@@ -44,9 +44,9 @@ int dlist_add_sort(struct dlist *list, int element)
 int dlist_remove_eq(struct dlist *list, int element)
 {
     int index = dlist_find(list, element);
-    if (index == -1)
-        return -1;
-    return dlist_remove_at(list, index);
+    if (index == -1 || dlist_remove_at(list, index) == -1)
+        return 0;
+    return 1;
 }
 
 struct dlist *dlist_copy(const struct dlist *list)
