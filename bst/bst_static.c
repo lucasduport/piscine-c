@@ -44,6 +44,7 @@ void add(struct bst *tree, int value)
         tree->capacity *= 2;
     }
     add_rec(tree, value, 0);
+    tree->size++;
 }
 
 int search(struct bst *tree, int value)
@@ -57,6 +58,7 @@ int search(struct bst *tree, int value)
     }
     return -1;
 }
+
 void bst_free(struct bst *tree)
 {
     if (tree == NULL)

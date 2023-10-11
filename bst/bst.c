@@ -23,9 +23,9 @@ struct bst_node *add_node(struct bst_node *tree, int value)
 
 struct bst_node *get_min(struct bst_node *t)
 {
-    if (t == NULL)
+    if (!t)
         return NULL;
-    for (; t->left != NULL; t = t->left)
+    for (; t->left; t = t->left)
         continue;
     return t;
 }
@@ -33,27 +33,39 @@ struct bst_node *get_min(struct bst_node *t)
 struct bst_node *delete_node(struct bst_node *tree, int value)
 {
     struct bst_node *tmp;
-    if (tree == NULL)
+    if (!tree)
         return NULL;
     else if (value < tree->data)
         tree->left = delete_node(tree->left, value);
     else if (value > tree->data)
         tree->right = delete_node(tree->right, value);
-    else if (tree->right == NULL)
+    else
     {
-        tmp = tree->left;
-        free(tree);
-        return tmp;
+        if (!tree->right && !tree->left)
+        {
+            free(tree);
+            return NULL;
+        }
+        else if (!tree->right)
+        {
+            tmp = tree->left;
+            free(tree);
+            return tmp;
+        }
+        else if (!tree->left)
+        {
+            tmp = tree->right;
+            free(tree);
+            return tmp;
+        }
+        else
+        {
+            tmp = get_min(tree->right);
+            tree->data = tmp->data;
+            tree->right = delete_node(tree->right, tmp->data);
+            return tree;
+        }
     }
-    else if (tree->left == NULL)
-    {
-        tmp = tree->right;
-        free(tree);
-        return tmp;
-    }
-    tmp = get_min(tree->right);
-    tree->data = tmp->data;
-    tree->right = delete_node(tree->right, tmp->data);
     return tree;
 }
 
