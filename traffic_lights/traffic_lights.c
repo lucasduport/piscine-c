@@ -20,28 +20,16 @@ void turn_off(unsigned char *light, unsigned char light_num)
     *light = *light & mask;
 }
 
+static unsigned char rol(unsigned char value, unsigned char roll)
+{
+    unsigned char roled = value << roll;
+    unsigned char leftPart = value >> (sizeof(unsigned char) * 4 - roll);
+    return roled | leftPart;
+}
+
 void next_step(unsigned char *light)
 {
-    unsigned char mask = 1 << 1;
-    if (*light == mask)
-    {
-        *light = *light << 1;
-        *light = *light & 15;
-        return;
-    }
-    mask = (1 << 1) | (1 << 3);
-    if (*light == mask)
-    {
-        *light = ~(mask);
-        *light = *light & 15;
-        return;
-    }
-    mask = 1 | (1 << 1);
-    if (*light == mask)
-    {
-        *light = *light & 15;
-        *light = mask << 1;
-    }
+    *light = rol(*light, 1);
 }
 
 void reverse(unsigned char *light)
