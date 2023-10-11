@@ -8,7 +8,7 @@ struct bst *init(size_t capacity)
         return NULL;
     b->size = 0;
     b->capacity = capacity;
-    b->data = calloc(sizeof(struct value), capacity);
+    b->data = calloc(sizeof(struct value *), capacity);
     if (b->data == NULL)
     {
         free(b);
@@ -19,6 +19,8 @@ struct bst *init(size_t capacity)
 
 static void add_rec(struct bst *tree, int value, size_t index)
 {
+    if (index > tree->capacity)
+        return;
     if (tree->data[index] == NULL)
     {
         tree->data[index] = malloc(sizeof(struct value));
@@ -38,7 +40,8 @@ void add(struct bst *tree, int value)
 {
     if (tree->size + 1 > tree->capacity)
     {
-        tree->data = realloc(tree->data, tree->capacity * 2);
+        tree->data =
+            realloc(tree->data, sizeof(struct value *) * tree->capacity * 2);
         if (tree->data == NULL)
             return;
         tree->capacity *= 2;
