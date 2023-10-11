@@ -1,8 +1,6 @@
 #ifndef BST_STATIC_H
 #define BST_STATIC_H
 
-#include <stdlib.h>
-
 struct value
 {
     int val;

@@ -1,7 +1,6 @@
 #include "bst.h"
 
-#include "bst_static.h"
-
+#include <stdlib.h>
 struct bst_node *create_node(int value)
 {
     struct bst_node *b = malloc(sizeof(struct bst_node));

@@ -1,5 +1,6 @@
 #include "bst_static.h"
 
+#include <stdlib.h>
 struct bst *init(size_t capacity)
 {
     struct bst *b = malloc(sizeof(struct bst));

@@ -1,8 +1,6 @@
 #ifndef BST_H
 #define BST_H
 
-#include <stdlib.h>
-
 struct bst_node
 {
     int data;
