@@ -6,6 +6,9 @@
 int is_perfect(const struct binary_tree *tree)
 {
     int n = size(tree);
+    if (n == 0 || n == 1)
+        return 1;
+    n += 1;
     if ((n & (n - 1)) == 0)
         return is_complete(tree);
     return 0;
