@@ -22,8 +22,8 @@ void turn_off(unsigned char *light, unsigned char light_num)
 
 static unsigned char rol(unsigned char value, unsigned char roll)
 {
-    unsigned char roled = value << roll;
     unsigned char leftPart = value >> (sizeof(unsigned char) * 4 - roll);
+    unsigned char roled = value << roll;
     return roled | leftPart;
 }
 
