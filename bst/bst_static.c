@@ -1,6 +1,16 @@
 #include "bst_static.h"
 
 #include <stdlib.h>
+
+void all_bull(struct bst *b, size_t start)
+{
+    if (b == NULL || b->data)
+        return;
+    for (size_t i = start; i < b->capacity; i++)
+        b->data[i] = NULL;
+    return;
+}
+
 struct bst *init(size_t capacity)
 {
     struct bst *b = malloc(sizeof(struct bst));
@@ -42,6 +52,7 @@ void add(struct bst *tree, int value)
     {
         tree->data =
             realloc(tree->data, sizeof(struct value *) * tree->capacity * 2);
+        all_bull(tree, tree->capacity);
         if (tree->data == NULL)
             return;
         tree->capacity *= 2;
