@@ -2,9 +2,9 @@
 
 #include <stdlib.h>
 
-void all_bull(struct bst *b, size_t start)
+static void all_null(struct bst *b, size_t start)
 {
-    if (b == NULL || b->data)
+    if (!b || !b->data)
         return;
     for (size_t i = start; i < b->capacity; i++)
         b->data[i] = NULL;
@@ -18,7 +18,8 @@ struct bst *init(size_t capacity)
         return NULL;
     b->size = 0;
     b->capacity = capacity;
-    b->data = calloc(sizeof(struct value *), capacity);
+    b->data = malloc(sizeof(struct value *) * capacity);
+    all_null(b, 0);
     if (b->data == NULL)
     {
         free(b);
@@ -29,9 +30,17 @@ struct bst *init(size_t capacity)
 
 static void add_rec(struct bst *tree, int value, size_t index)
 {
-    if (index > tree->capacity)
-        return;
-    if (tree->data[index] == NULL)
+    if (index >= tree->capacity)
+    {
+        tree->data =
+            realloc(tree->data, sizeof(struct value *) * tree->capacity * 2);
+        if (tree->data == NULL)
+            return;
+        tree->capacity *= 2;
+        all_null(tree, tree->capacity / 2);
+        add_rec(tree, value, index);
+    }
+    else if (tree->data[index] == NULL)
     {
         tree->data[index] = malloc(sizeof(struct value));
         if (tree->data[index] == NULL)
@@ -48,15 +57,6 @@ static void add_rec(struct bst *tree, int value, size_t index)
 
 void add(struct bst *tree, int value)
 {
-    if (tree->size + 1 > tree->capacity)
-    {
-        tree->data =
-            realloc(tree->data, sizeof(struct value *) * tree->capacity * 2);
-        all_bull(tree, tree->capacity);
-        if (tree->data == NULL)
-            return;
-        tree->capacity *= 2;
-    }
     add_rec(tree, value, 0);
     tree->size++;
 }
@@ -65,7 +65,7 @@ int search(struct bst *tree, int value)
 {
     if (tree == NULL || tree->size == 0 || tree->data == NULL)
         return -1;
-    for (size_t i = 0; i < tree->size; i++)
+    for (size_t i = 0; i < tree->capacity; i++)
     {
         if (tree->data[i] && tree->data[i]->val == value)
             return i;
@@ -79,7 +79,7 @@ void bst_free(struct bst *tree)
         return;
     if (tree->data != NULL)
     {
-        for (size_t i = 0; i < tree->size; i++)
+        for (size_t i = 0; i < tree->capacity; i++)
         {
             if (tree->data[i] != NULL)
                 free(tree->data[i]);
