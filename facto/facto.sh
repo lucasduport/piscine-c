@@ -2,16 +2,16 @@
 
 # Here we will use command substitution to fetch our result, as it spawns a
 # subshell 'res' will only be alive inside the command substitution
-if [ $# -eq 0 ]; then
+if [ $# -ne 1 ]; then
     exit 1
 fi
 
-facto() {
-    f=1
-    for i in $(seq 1 $1); do
-        f=$(($f * $i))
-    done
-}
+f=1
+i=1
 
-facto $1
+while [ $i -le $1 ]; do
+    f=$(($f * $i))
+    i=$(($i + 1))
+done
 echo $f
+
