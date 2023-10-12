@@ -9,7 +9,7 @@ if [ ! -r "$1" ]; then
 fi
 
 while IFS='' read -r line; do
-    if [ $(( $(wc -c <<< $line) )) -gt 80 ]; then
-        echo -e "$line"
+    if [ $(( $(IFS=''; printf '%s\n' ${line} | wc -m) )) -gt 80 ]; then
+        printf '%s\n' "${line}"
     fi
-done<$1
+done< "$1"
