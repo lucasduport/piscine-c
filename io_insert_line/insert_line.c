@@ -3,15 +3,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static int extend_file(int n, int line, const char *content, FILE *f_write)
+static int extend_file(int n, int *line, const char *content, FILE *f_write)
 {
     int wr;
-    while (line < n)
+    while (*line < n)
     {
         wr = fputs("\n", f_write);
         if (wr < 0)
             return -1;
-        line++;
+        *line += 1;
     }
     wr = fputs(content, f_write);
     if (wr < 0)
@@ -47,10 +47,10 @@ int insert_line(const char *file_in, const char *file_out, const char *content,
         if (wr < 0)
             return -1;
     }
-    if (replaced == 0 && extend_file(n, line, content, f_write) == -1)
+    if (replaced == 0 && extend_file(n, &line, content, f_write) == -1)
         return -1;
     free(buff);
     fclose(f_read);
     fclose(f_write);
-    return 0;
+    return line;
 }
