@@ -21,7 +21,6 @@ int reverse_content(const char *file_in, const char *file_out)
             return -1;
         off = fseek(f_read, -++count, SEEK_END);
     }
-    fputc('\n', f_write);
     fclose(f_read);
     fclose(f_write);
     return 0;
