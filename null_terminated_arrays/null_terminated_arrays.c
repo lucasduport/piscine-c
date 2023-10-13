@@ -24,7 +24,7 @@ void reverse_matrix(const char ***matrix)
     for (size_t i = 0; i < l1; i++)
     {
         size_t l2 = get_l2(matrix[i]);
-        for (size_t j = 0; j < l2 / 2; i++)
+        for (size_t j = 0; j < l2 / 2; j++)
         {
             const char *tmp = matrix[i][j];
             matrix[i][j] = matrix[i][l2 - 1 - j];
