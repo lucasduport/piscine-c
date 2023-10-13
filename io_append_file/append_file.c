@@ -5,7 +5,7 @@
 
 int append_file(const char *file_1, const char *content)
 {
-    if (file_1 == NULL)
+    if (file_1 == NULL || content == NULL)
         return -1;
     FILE *f_write = fopen(file_1, "a");
     if (fprintf(f_write, "%s", content) == -1)
