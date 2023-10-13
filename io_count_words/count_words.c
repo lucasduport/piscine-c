@@ -16,7 +16,7 @@ int count_words(const char *file_in)
     int count = 0;
     while ((c = fgetc(f_read)) != -1)
     {
-        if (c > ' ')
+        if (c != ' ' && c != '\t' && c != '\n')
         {
             if (lastLetter != i - 1)
                 count++;
