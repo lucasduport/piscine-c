@@ -10,7 +10,11 @@ struct list *list_prepend(struct list *list, const void *value,
     if (new == NULL)
         return NULL;
     new->next = list;
-    memcpy(new->data, value, data_size);
+    new->data = malloc(sizeof(void *));
+    if (new->data == NULL)
+        return NULL;
+    if (memcpy(new->data, value, data_size) == NULL)
+        return NULL;
     return new;
 }
 
@@ -27,6 +31,8 @@ void list_destroy(struct list *list)
     for (; list != NULL;)
     {
         struct list *tmp = list->next;
+        if (list->data != NULL)
+            free(list->data);
         free(list);
         list = tmp;
     }
