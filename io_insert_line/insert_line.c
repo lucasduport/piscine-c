@@ -13,6 +13,7 @@ static int extend_file(int n, int *line, const char *content, FILE *f_write)
             return -1;
         *line += 1;
     }
+    line--;
     wr = fputs(content, f_write);
     if (wr < 0)
         return -1;
@@ -52,5 +53,5 @@ int insert_line(const char *file_in, const char *file_out, const char *content,
     free(buff);
     fclose(f_read);
     fclose(f_write);
-    return line;
+    return n + 1;
 }
