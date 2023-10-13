@@ -11,8 +11,8 @@ int merge_files(const char *file_1, const char *file_2)
     FILE *f_write = fopen(file_1, "a");
     if (f_write == NULL)
         return -1;
-    size_t buffSize = 20;
-    char *buff = malloc(sizeof(char) * buffSize);
+    size_t buffSize = 0;
+    char *buff = NULL;
     ssize_t r;
     while ((r = getline(&buff, &buffSize, f_read)) != -1)
     {
@@ -23,5 +23,7 @@ int merge_files(const char *file_1, const char *file_2)
             return -1;
     }
     free(buff);
+    fclose(f_read);
+    fclose(f_write);
     return 0;
 }
