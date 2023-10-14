@@ -3,6 +3,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+static int count_lines(const char *d)
+{
+    FILE *f_read = fopen(d, "r");
+    if (!f_read)
+        return -1;
+    size_t buffSize = 0;
+    char *buff = NULL;
+    ssize_t r;
+    int line = 0;
+    while ((r = getline(&buff, &buffSize, f_read)) != -1)
+    {
+        if (buff == NULL)
+            return -1;
+        line++;
+    }
+    free(buff);
+    fclose(f_read);
+    return line;
+}
+
 static int extend_file(int n, int *line, const char *content, FILE *f_write)
 {
     int wr;
@@ -39,19 +59,17 @@ int insert_line(const char *file_in, const char *file_out, const char *content,
             return -1;
         if (line++ == n)
         {
-            wr = fputs(content, f_write);
             replaced = 1;
-            break;
+            wr = fputs(content, f_write);
         }
-        else
-            wr = fputs(buff, f_write);
+        wr = fputs(buff, f_write);
         if (wr < 0)
             return -1;
     }
-    if (replaced == 0 && extend_file(n, &line, content, f_write) == -1)
+    if (!replaced && extend_file(n, &line, content, f_write) == -1)
         return -1;
     free(buff);
     fclose(f_read);
     fclose(f_write);
-    return n + 1;
+    return count_lines(file_out);
 }
