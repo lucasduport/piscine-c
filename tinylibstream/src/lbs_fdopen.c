@@ -136,13 +136,13 @@ int lbs_fgetc(struct stream *stream)
     }
     if (stream->buffered_size == 0)
     {
-        stream->buffered_size =
-            read(stream->fd, stream->buffer, LBS_BUFFER_SIZE);
-        if (stream->buffered_size == -1)
+        ssize_t r = read(stream->fd, stream->buffer, LBS_BUFFER_SIZE);
+        if (r == -1)
         {
             stream->error = 1;
             return -1;
         }
+        stream->buffered_size = r;
     }
     int wasW = 0;
     if (stream->io_operation == STREAM_WRITING)
