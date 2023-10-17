@@ -37,26 +37,17 @@ struct stream *lbs_fopen(const char *path, const char *mode)
     int fd = -1;
     if (strcmp(mode, "w") == 0)
         fd = open(path, O_WRONLY | O_CREAT | O_TRUNC);
-    if (strcmp(mode, "r+") == 0)
+    else if (strcmp(mode, "r+") == 0)
         fd = open(path, O_RDWR);
-    if (strcmp(mode, "r") == 0)
+    else if (strcmp(mode, "r") == 0)
         fd = open(path, O_RDONLY);
-    if (strcmp(mode, "w+") == 0)
+    else if (strcmp(mode, "w+") == 0)
         fd = open(path, O_RDWR | O_CREAT | O_TRUNC);
+    else
+        return NULL;
     return lbs_fdopen(fd, mode);
 }
 
-/*
-** Flushes the stream's buffer to the underlying file descriptor, making sure
-** the stream position is correct. When there is some write data buffered, it
-** has to be written. When there is some read data buffered, it has to be
-** discarded and the process must seek the file descriptor back to the
-** position the user expects.
-**
-** Works just like fflush(3), except:
-**  - lbs_fflush() *DOES NOT* flush all open output streams if stream is NULL.
-** May set the error indicator.
-*/
 int lbs_fflush(struct stream *stream)
 {
     if (stream->io_operation == STREAM_WRITING)
@@ -76,22 +67,12 @@ int lbs_fflush(struct stream *stream)
 
 int lbs_fclose(struct stream *file)
 {
-    if (file == NULL)
-        return 1;
-    if (lbs_fflush(file) == 1)
-        return 1;
-    if (close(file->fd) == -1)
+    if (file == NULL || lbs_fflush(file) == 1 || close(file->fd) == -1)
         return 1;
     free(file);
     return 0;
 }
 
-/*
-** Writes a single character to some stream.
-** It may cause the stream to flush if the buffer is full or the current
-** buffering policy requires it.
-** Works just like fputc(3). May set the error indicator.
-*/
 int lbs_fputc(int c, struct stream *stream)
 {
     if (!stream_writable(stream))
@@ -99,40 +80,35 @@ int lbs_fputc(int c, struct stream *stream)
         stream->error = 1;
         return -1;
     }
-    stream->buffer[stream->buffered_size++] = c;
-    int wasR = 0;
     if (stream->io_operation == STREAM_READING)
     {
-        wasR = 1;
-        lbs_fflush(stream);
+        if (lbs_fflush(stream) == 1)
+            return -1;
         stream->io_operation = STREAM_WRITING;
     }
+    stream->buffer[stream->buffered_size++] = c;
     if (stream->buffered_size == LBS_BUFFER_SIZE
         || stream->buffering_mode == STREAM_UNBUFFERED)
         lbs_fflush(stream);
-    if (stream->buffering_mode == STREAM_LINE_BUFFERED || c == '\n')
+    if (stream->buffering_mode == STREAM_LINE_BUFFERED && c == '\n')
         lbs_fflush(stream);
     if (stream->error == 1)
         return -1;
-    if (wasR == 1)
-    {
-        lbs_fflush(stream);
-        stream->io_operation = STREAM_READING;
-    }
     return c;
 }
 
-/*
-** Reads a new character from the stream's buffer.
-** If the buffer it empty, it should be refilled.
-** Works just like fgetc(3). May set the error indicator.
-*/
 int lbs_fgetc(struct stream *stream)
 {
     if (!stream_readable(stream))
     {
         stream->error = 1;
         return -1;
+    }
+    if (stream->io_operation == STREAM_WRITING)
+    {
+        if (lbs_fflush(stream) == 1)
+            return -1;
+        stream->io_operation = STREAM_READING;
     }
     if (stream->buffered_size == 0)
     {
@@ -144,19 +120,7 @@ int lbs_fgetc(struct stream *stream)
         }
         stream->buffered_size = r;
     }
-    int wasW = 0;
-    if (stream->io_operation == STREAM_WRITING)
-    {
-        wasW = 1;
-        lbs_fflush(stream);
-        stream->io_operation = STREAM_READING;
-    }
     int c = stream->buffer[stream->already_read++];
-    if (wasW == 1)
-    {
-        lbs_fflush(stream);
-        stream->io_operation = STREAM_WRITING;
-    }
     if (stream->already_read == stream->buffered_size)
         stream->buffered_size = 0;
     return c;
