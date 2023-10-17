@@ -20,6 +20,7 @@ struct stream *lbs_fdopen(int fd, const char *mode)
         str->flags = (O_RDONLY);
     if (strcmp(mode, "w+") == 0)
         str->flags = (O_RDWR | O_CREAT | O_TRUNC);
+    str->fd = fd;
     str->buffering_mode = STREAM_BUFFERED;
     str->error = 0;
     if (strcmp(mode, "r+") == 0 || strcmp(mode, "r") == 0)
@@ -71,4 +72,46 @@ int lbs_fflush(struct stream *stream)
     }
     stream->buffered_size = 0;
     return stream->error;
+}
+
+int lbs_fclose(struct stream *file)
+{
+    if (file == NULL)
+        return 1;
+    if (lbs_fflush(file) == 1)
+        return 1;
+    if (close(file->fd) == -1)
+        return 1;
+    free(file);
+    return 0;
+}
+
+/*
+** Writes a single character to some stream.
+** It may cause the stream to flush if the buffer is full or the current
+** buffering policy requires it.
+** Works just like fputc(3). May set the error indicator.
+*/
+int lbs_fputc(int c, struct stream *stream)
+{
+    stream->buffer[stream->buffered_size++] = c;
+    int wasR = 0;
+    if (stream->io_operation == STREAM_READING)
+    {
+        wasR = 1;
+        stream->io_operation = STREAM_WRITING;
+    }
+    if (stream->buffered_size == LBS_BUFFER_SIZE
+        || stream->buffering_mode == STREAM_UNBUFFERED)
+        lbs_fflush(stream);
+    if (stream->buffering_mode == STREAM_LINE_BUFFERED || c == '\n')
+        lbs_fflush(stream);
+    if (stream->error == 1)
+        return -1;
+    if (wasR == 1)
+    {
+        stream->io_operation = STREAM_READING;
+        lbs_fflush(stream);
+    }
+    return c;
 }
