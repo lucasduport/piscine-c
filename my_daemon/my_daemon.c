@@ -15,10 +15,12 @@ void handler(int signum)
     case SIGUSR1:
         fflush(stdout);
         printf("Received %d signals.\n", count);
+        fflush(stdout);
         break;
     case SIGUSR2:
         fflush(stdout);
         printf("Current generation: %d\n", generation);
+        fflush(stdout);
         break;
     case SIGTERM:
         generation++;
