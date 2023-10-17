@@ -94,11 +94,17 @@ int lbs_fclose(struct stream *file)
 */
 int lbs_fputc(int c, struct stream *stream)
 {
+    if (!stream_writable(stream))
+    {
+        stream->error = 1;
+        return -1;
+    }
     stream->buffer[stream->buffered_size++] = c;
     int wasR = 0;
     if (stream->io_operation == STREAM_READING)
     {
         wasR = 1;
+        lbs_fflush(stream);
         stream->io_operation = STREAM_WRITING;
     }
     if (stream->buffered_size == LBS_BUFFER_SIZE
@@ -110,8 +116,48 @@ int lbs_fputc(int c, struct stream *stream)
         return -1;
     if (wasR == 1)
     {
-        stream->io_operation = STREAM_READING;
         lbs_fflush(stream);
+        stream->io_operation = STREAM_READING;
     }
+    return c;
+}
+
+/*
+** Reads a new character from the stream's buffer.
+** If the buffer it empty, it should be refilled.
+** Works just like fgetc(3). May set the error indicator.
+*/
+int lbs_fgetc(struct stream *stream)
+{
+    if (!stream_readable(stream))
+    {
+        stream->error = 1;
+        return -1;
+    }
+    if (stream->buffered_size == 0)
+    {
+        stream->buffered_size =
+            read(stream->fd, stream->buffer, LBS_BUFFER_SIZE);
+        if (stream->buffered_size == -1)
+        {
+            stream->error = 1;
+            return -1;
+        }
+    }
+    int wasW = 0;
+    if (stream->io_operation == STREAM_WRITING)
+    {
+        wasW = 1;
+        lbs_fflush(stream);
+        stream->io_operation = STREAM_READING;
+    }
+    int c = stream->buffer[stream->already_read++];
+    if (wasW == 1)
+    {
+        lbs_fflush(stream);
+        stream->io_operation = STREAM_WRITING;
+    }
+    if (stream->already_read == stream->buffered_size)
+        stream->buffered_size = 0;
     return c;
 }
