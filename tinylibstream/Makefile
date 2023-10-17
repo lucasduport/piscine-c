@@ -7,7 +7,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c99 -Wvla -pedantic
 CPPFLAGS = -fsanitize=address -g3
 LDFLAGS =
 LIBNAME = libstream.a
-OBJ = src/lbs_fdopen.c
+OBJ = src/lbs_fdopen.o
 EXE = main
 
 library: $(OBJ)
