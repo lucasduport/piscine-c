@@ -76,6 +76,7 @@ int lbs_fclose(struct stream *file)
         free(file);
         return 1;
     }
+    free(file);
     return 0;
 }
 
