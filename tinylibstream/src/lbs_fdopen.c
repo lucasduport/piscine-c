@@ -22,7 +22,8 @@ struct stream *lbs_fdopen(int fd, const char *mode)
         str->flags = (O_RDWR | O_CREAT | O_TRUNC);
     str->fd = fd;
     str->buffering_mode = STREAM_BUFFERED;
-    str->error = 0;
+    if (isatty(fd))
+        str->buffering_mode = s str->error = 0;
     if (strcmp(mode, "r+") == 0 || strcmp(mode, "r") == 0)
         str->io_operation = STREAM_READING;
     if (strcmp(mode, "w+") == 0 || strcmp(mode, "w") == 0)
@@ -62,14 +63,19 @@ int lbs_fflush(struct stream *stream)
             stream->error = 1;
     }
     stream->buffered_size = 0;
+    stream->already_read = 0;
     return stream->error;
 }
 
 int lbs_fclose(struct stream *file)
 {
-    if (file == NULL || lbs_fflush(file) == 1 || close(file->fd) == -1)
+    if (file == NULL)
         return 1;
-    free(file);
+    if (lbs_fflush(file) == 1 || close(file->fd) == -1)
+    {
+        free(file);
+        return 1;
+    }
     return 0;
 }
 
@@ -92,8 +98,12 @@ int lbs_fputc(int c, struct stream *stream)
         lbs_fflush(stream);
     if (stream->buffering_mode == STREAM_LINE_BUFFERED && c == '\n')
         lbs_fflush(stream);
-    if (stream->error == 1)
+    if (c == 0 || stream->error == 1)
+    {
+        lbs_fflush(stream);
+        stream->error = 1;
         return -1;
+    }
     return c;
 }
 
@@ -110,10 +120,13 @@ int lbs_fgetc(struct stream *stream)
             return -1;
         stream->io_operation = STREAM_READING;
     }
+    if (stream->already_read == stream->buffered_size)
+        stream->buffered_size = 0;
     if (stream->buffered_size == 0)
     {
         ssize_t r = read(stream->fd, stream->buffer, LBS_BUFFER_SIZE);
-        if (r == -1)
+        stream->already_read = 0;
+        if (r <= 0)
         {
             stream->error = 1;
             return -1;
@@ -121,7 +134,5 @@ int lbs_fgetc(struct stream *stream)
         stream->buffered_size = r;
     }
     int c = stream->buffer[stream->already_read++];
-    if (stream->already_read == stream->buffered_size)
-        stream->buffered_size = 0;
     return c;
 }
