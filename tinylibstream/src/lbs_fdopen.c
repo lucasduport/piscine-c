@@ -23,7 +23,7 @@ struct stream *lbs_fdopen(int fd, const char *mode)
     str->fd = fd;
     str->buffering_mode = STREAM_BUFFERED;
     if (isatty(fd))
-        str->buffering_mode = s str->error = 0;
+        str->buffering_mode = STREAM_LINE_BUFFERED;
     if (strcmp(mode, "r+") == 0 || strcmp(mode, "r") == 0)
         str->io_operation = STREAM_READING;
     if (strcmp(mode, "w+") == 0 || strcmp(mode, "w") == 0)
