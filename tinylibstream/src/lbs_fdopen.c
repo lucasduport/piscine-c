@@ -51,14 +51,14 @@ struct stream *lbs_fopen(const char *path, const char *mode)
 
 int lbs_fflush(struct stream *stream)
 {
-    if (stream->io_operation == STREAM_WRITING)
+    if (stream->io_operation == STREAM_WRITING && stream->buffered_size != 0)
     {
         if (write(stream->fd, stream->buffer, stream->buffered_size) == -1)
             stream->error = 1;
     }
     if (stream->io_operation == STREAM_READING)
     {
-        if (lseek(stream->fd, -stream_unused_buffer_space(stream), SEEK_CUR)
+        if (lseek(stream->fd, -stream_remaining_buffered(stream), SEEK_CUR)
             == -1)
             stream->error = 1;
     }
@@ -133,6 +133,6 @@ int lbs_fgetc(struct stream *stream)
         }
         stream->buffered_size = r;
     }
-    int c = stream->buffer[stream->already_read++];
+    unsigned char c = stream->buffer[stream->already_read++];
     return c;
 }
