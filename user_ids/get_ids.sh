@@ -1,3 +1,3 @@
 #!/bin/sh
 
-cut -d ":" -f 3 "/etc/passwd" | sort -nr
+cut -d ":" -f 3 "/etc/passwd" | sort -nur
