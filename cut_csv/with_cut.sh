@@ -12,7 +12,11 @@ if ! [ "$2" -eq "$2" ] 2> /dev/null; then
     exit 1;
 fi
 
-if [ $(($(wc -l "$1" | cut -d " " -f 1))) -lt $(("$2")) ]; then
+if [ "$2" -le 0 ]; then
+    exit 1;
+fi
+
+if [ $(($(wc -l "$1" | cut -d " " -f 1))) -lt $(($2)) ]; then
     exit 1
 fi
 
